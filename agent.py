@@ -17,9 +17,7 @@ from tools import (
     check_refund_eligibility, issue_refund, send_reply, escalate
 )
 
-# ─────────────────────────────────────────
-# CONFIGURE GROQ
-# ─────────────────────────────────────────
+
 
 client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 MODEL = "llama-3.3-70b-versatile"
