@@ -95,8 +95,8 @@ async def run_agent():
 
 
 if __name__ == "__main__":
-    if not os.environ.get("GEMINI_API_KEY"):
-        print("ERROR: GEMINI_API_KEY not set!")
-        print("Run: $env:GEMINI_API_KEY='your_key_here'")
+    if not os.environ.get("GROQ_API_KEY"):
+        print("ERROR: GROQ_API_KEY not set!")
+        print("Run: $env:GROQ_API_KEY='your_key_here'")
         exit(1)
     asyncio.run(run_agent())
