@@ -22,9 +22,8 @@ from tools import (
 client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 MODEL = "llama-3.3-70b-versatile"
 
-# ─────────────────────────────────────────
 # TOOL REGISTRY
-# ─────────────────────────────────────────
+
 
 TOOL_REGISTRY = {
     "get_order": get_order,
@@ -105,9 +104,6 @@ def call_llm(prompt: str) -> dict:
     return json.loads(cleaned)
 
 
-# ─────────────────────────────────────────
-# TOOL EXECUTOR
-# ─────────────────────────────────────────
 
 async def execute_tool(tool_name: str, args: dict, ticket_id: str, audit_log: list) -> dict:
     """
@@ -194,7 +190,7 @@ async def process_ticket(ticket: dict, audit_log: list) -> dict:
         "customer_email": ticket.get("customer_email")
     })
 
-    # ── Step 1: Ask LLM to plan the approach ──
+    
     planning_prompt = f"""
 TICKET TO RESOLVE:
 ID: {ticket['ticket_id']}
@@ -237,7 +233,7 @@ Output ONLY valid JSON, no extra text.
             "processed_at": datetime.now().isoformat()
         }
 
-    # Log the agent's thinking
+    
     audit_log.append({
         "ticket_id": ticket_id,
         "event": "agent_plan",
@@ -247,7 +243,6 @@ Output ONLY valid JSON, no extra text.
         "timestamp": datetime.now().isoformat()
     })
 
-    # ── Step 2: Execute tool calls in sequence ──
     tool_results = {}
     for tool_call in plan.get("tool_calls", []):
         tool_name = tool_call.get("tool")
@@ -266,7 +261,6 @@ Output ONLY valid JSON, no extra text.
         result = await execute_tool(tool_name, args, ticket_id, audit_log)
         tool_results[tool_name] = result
 
-    # ── Step 3: Ask LLM for final decision based on tool results ──
     followup_prompt = f"""
 Ticket: {ticket['subject']}
 Customer: {ticket['customer_email']}
@@ -284,7 +278,6 @@ Output ONLY valid JSON with: thinking, resolution (resolved/escalated/needs_info
     except Exception:
         final_plan = plan
 
-    # ── Step 4: Record outcome ──
     end_time = datetime.now()
     duration_ms = int((end_time - start_time).total_seconds() * 1000)
 
