@@ -1,29 +1,27 @@
 """
-agent.py - The brain of the ShopWave support agent.
+agent.py - ShopWave support agent using Gemini API.
 ReAct loop: Think -> Choose Tool -> Run Tool -> Observe -> Think Again
-
-Using Groq API (free, fast) with llama-3.3-70b model.
 """
 
 import asyncio
 import json
 import re
 import os
+import time
 from datetime import datetime
-from groq import Groq
+import google.generativeai as genai
 
 from tools import (
     get_order, get_customer, get_product, search_knowledge_base,
     check_refund_eligibility, issue_refund, send_reply, escalate
 )
 
+# ─────────────────────────────────────────
+# CONFIGURE GEMINI
+# ─────────────────────────────────────────
 
-
-client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
-MODEL = "llama-3.3-70b-versatile"
-
-# TOOL REGISTRY
-
+genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
+model = genai.GenerativeModel("gemini-1.5-flash-latest")
 
 TOOL_REGISTRY = {
     "get_order": get_order,
@@ -35,10 +33,6 @@ TOOL_REGISTRY = {
     "send_reply": send_reply,
     "escalate": escalate,
 }
-
-# ─────────────────────────────────────────
-# SYSTEM PROMPT
-# ─────────────────────────────────────────
 
 SYSTEM_PROMPT = """
 You are an autonomous support agent for ShopWave, an e-commerce platform.
@@ -65,7 +59,7 @@ RULES:
 
 CONFIDENCE: HIGH >85% resolve autonomously, MEDIUM 60-85% resolve with note, LOW <60% escalate
 
-OUTPUT: respond ONLY with valid JSON, no extra text, no markdown:
+OUTPUT: respond ONLY with valid JSON, no extra text, no markdown fences:
 {
   "thinking": "your reasoning about this ticket",
   "tool_calls": [
@@ -80,117 +74,68 @@ OUTPUT: respond ONLY with valid JSON, no extra text, no markdown:
 """
 
 
-# ─────────────────────────────────────────
-# GROQ HELPER
-# ─────────────────────────────────────────
-
 def call_llm(prompt: str) -> dict:
-    """
-    Send a prompt to Groq and parse the JSON response.
-    Groq is synchronous so we call it directly.
-    """
-    response = client.chat.completions.create(
-        model=MODEL,
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": prompt}
-        ],
-        temperature=0.2,
-        max_tokens=2000,
-    )
-    raw = response.choices[0].message.content
-    # Strip markdown code fences if model adds them
-    cleaned = re.sub(r"```json|```", "", raw).strip()
-    return json.loads(cleaned)
-
+    """Call Gemini and parse JSON response. Retries on rate limit."""
+    for attempt in range(3):
+        try:
+            response = model.generate_content(
+                SYSTEM_PROMPT + "\n\n" + prompt,
+                generation_config=genai.types.GenerationConfig(
+                    temperature=0.2,
+                    max_output_tokens=2000,
+                )
+            )
+            raw = response.text
+            cleaned = re.sub(r"```json|```", "", raw).strip()
+            return json.loads(cleaned)
+        except Exception as e:
+            if "429" in str(e) or "quota" in str(e).lower():
+                wait = (attempt + 1) * 15
+                print(f"    Rate limit — waiting {wait}s...")
+                time.sleep(wait)
+                continue
+            raise
 
 
 async def execute_tool(tool_name: str, args: dict, ticket_id: str, audit_log: list) -> dict:
-    """
-    Run a single tool call safely.
-    Retries once on failure. Never crashes the agent.
-    """
     func = TOOL_REGISTRY.get(tool_name)
     if not func:
         result = {"error": f"Unknown tool: {tool_name}"}
-        audit_log.append({
-            "ticket_id": ticket_id,
-            "timestamp": datetime.now().isoformat(),
-            "tool": tool_name,
-            "args": args,
-            "result": result,
-            "status": "unknown_tool"
-        })
+        audit_log.append({"ticket_id": ticket_id, "timestamp": datetime.now().isoformat(),
+                          "tool": tool_name, "args": args, "result": result, "status": "unknown_tool"})
         return result
 
     for attempt in range(2):
         try:
             result = await func(**args)
-            audit_log.append({
-                "ticket_id": ticket_id,
-                "timestamp": datetime.now().isoformat(),
-                "tool": tool_name,
-                "args": args,
-                "result": result,
-                "status": "success",
-                "attempt": attempt + 1
-            })
+            audit_log.append({"ticket_id": ticket_id, "timestamp": datetime.now().isoformat(),
+                              "tool": tool_name, "args": args, "result": result,
+                              "status": "success", "attempt": attempt + 1})
             return result
-
         except (TimeoutError, ValueError, ConnectionError) as e:
-            audit_log.append({
-                "ticket_id": ticket_id,
-                "timestamp": datetime.now().isoformat(),
-                "tool": tool_name,
-                "args": args,
-                "error": str(e),
-                "status": "failed",
-                "attempt": attempt + 1
-            })
+            audit_log.append({"ticket_id": ticket_id, "timestamp": datetime.now().isoformat(),
+                              "tool": tool_name, "args": args, "error": str(e),
+                              "status": "failed", "attempt": attempt + 1})
             if attempt == 0:
                 await asyncio.sleep(0.2)
                 continue
             return {"error": f"Tool {tool_name} failed after 2 attempts: {str(e)}"}
-
         except Exception as e:
-            audit_log.append({
-                "ticket_id": ticket_id,
-                "timestamp": datetime.now().isoformat(),
-                "tool": tool_name,
-                "args": args,
-                "error": str(e),
-                "status": "unexpected_error",
-                "attempt": attempt + 1
-            })
+            audit_log.append({"ticket_id": ticket_id, "timestamp": datetime.now().isoformat(),
+                              "tool": tool_name, "args": args, "error": str(e),
+                              "status": "unexpected_error", "attempt": attempt + 1})
             return {"error": f"Unexpected error in {tool_name}: {str(e)}"}
 
 
-# ─────────────────────────────────────────
-# MAIN AGENT FUNCTION
-# ─────────────────────────────────────────
-
 async def process_ticket(ticket: dict, audit_log: list) -> dict:
-    """
-    Process one support ticket end-to-end.
-
-    Flow:
-    1. Send ticket to LLM -> get plan (thinking + tool_calls)
-    2. Execute each tool call safely
-    3. Send results back to LLM -> get final decision
-    4. Log everything to audit trail
-    """
     ticket_id = ticket["ticket_id"]
     start_time = datetime.now()
 
-    audit_log.append({
-        "ticket_id": ticket_id,
-        "event": "ticket_received",
-        "timestamp": start_time.isoformat(),
-        "subject": ticket.get("subject"),
-        "customer_email": ticket.get("customer_email")
-    })
+    audit_log.append({"ticket_id": ticket_id, "event": "ticket_received",
+                      "timestamp": start_time.isoformat(),
+                      "subject": ticket.get("subject"),
+                      "customer_email": ticket.get("customer_email")})
 
-    
     planning_prompt = f"""
 TICKET TO RESOLVE:
 ID: {ticket['ticket_id']}
@@ -200,64 +145,40 @@ Message: {ticket['body']}
 Source: {ticket['source']}
 Submitted: {ticket['created_at']}
 
-Analyze this ticket carefully.
-Provide your plan as a JSON object with at least 3 tool calls.
-Output ONLY valid JSON, no extra text.
+Analyze this ticket carefully. Output ONLY valid JSON with at least 3 tool calls.
 """
 
     try:
         plan = call_llm(planning_prompt)
     except Exception as e:
-        audit_log.append({
-            "ticket_id": ticket_id,
-            "event": "llm_error",
-            "error": str(e),
-            "timestamp": datetime.now().isoformat()
-        })
+        audit_log.append({"ticket_id": ticket_id, "event": "llm_error",
+                          "error": str(e), "timestamp": datetime.now().isoformat()})
         await execute_tool("escalate", {
             "ticket_id": ticket_id,
-            "summary": f"LLM error processing ticket: {ticket['subject']}. Error: {str(e)}",
+            "summary": f"LLM error: {str(e)[:100]}",
             "priority": "medium"
         }, ticket_id, audit_log)
-        return {
-            "ticket_id": ticket_id,
-            "status": "escalated",
-            "reason": "llm_error",
-            "subject": ticket["subject"],
-            "customer_email": ticket["customer_email"],
-            "confidence": 0,
-            "summary": f"Escalated due to LLM error: {str(e)[:100]}",
-            "tools_called": [],
-            "tool_count": 0,
-            "duration_ms": 0,
-            "processed_at": datetime.now().isoformat()
-        }
+        return {"ticket_id": ticket_id, "status": "escalated", "reason": "llm_error",
+                "subject": ticket["subject"], "customer_email": ticket["customer_email"],
+                "confidence": 0, "summary": f"Escalated due to LLM error: {str(e)[:80]}",
+                "tools_called": [], "tool_count": 0,
+                "duration_ms": 0, "processed_at": datetime.now().isoformat()}
 
-    
-    audit_log.append({
-        "ticket_id": ticket_id,
-        "event": "agent_plan",
-        "thinking": plan.get("thinking", ""),
-        "planned_tools": [tc["tool"] for tc in plan.get("tool_calls", [])],
-        "confidence": plan.get("confidence", 0),
-        "timestamp": datetime.now().isoformat()
-    })
+    audit_log.append({"ticket_id": ticket_id, "event": "agent_plan",
+                      "thinking": plan.get("thinking", ""),
+                      "planned_tools": [tc["tool"] for tc in plan.get("tool_calls", [])],
+                      "confidence": plan.get("confidence", 0),
+                      "timestamp": datetime.now().isoformat()})
 
     tool_results = {}
     for tool_call in plan.get("tool_calls", []):
         tool_name = tool_call.get("tool")
         args = tool_call.get("args", {})
-
-        # Safety guard: never issue refund without checking eligibility first
         if tool_name == "issue_refund" and "check_refund_eligibility" not in tool_results:
-            audit_log.append({
-                "ticket_id": ticket_id,
-                "event": "safety_block",
-                "message": "Blocked issue_refund - eligibility not checked first",
-                "timestamp": datetime.now().isoformat()
-            })
+            audit_log.append({"ticket_id": ticket_id, "event": "safety_block",
+                              "message": "Blocked issue_refund - eligibility not checked",
+                              "timestamp": datetime.now().isoformat()})
             continue
-
         result = await execute_tool(tool_name, args, ticket_id, audit_log)
         tool_results[tool_name] = result
 
@@ -266,11 +187,11 @@ Ticket: {ticket['subject']}
 Customer: {ticket['customer_email']}
 Message: {ticket['body']}
 
-Tool results obtained:
+Tool results:
 {json.dumps(tool_results, indent=2, default=str)}
 
-Based on these results, provide your final decision.
-Output ONLY valid JSON with: thinking, resolution (resolved/escalated/needs_info), confidence (0-1), summary.
+Provide final JSON decision. Output ONLY valid JSON with:
+thinking, resolution (resolved/escalated/needs_info), confidence (0-1), summary
 """
 
     try:
@@ -294,16 +215,11 @@ Output ONLY valid JSON with: thinking, resolution (resolved/escalated/needs_info
         "processed_at": end_time.isoformat()
     }
 
-    audit_log.append({
-        "ticket_id": ticket_id,
-        "event": "ticket_resolved",
-        "outcome": outcome,
-        "timestamp": end_time.isoformat()
-    })
+    audit_log.append({"ticket_id": ticket_id, "event": "ticket_resolved",
+                      "outcome": outcome, "timestamp": end_time.isoformat()})
 
     print(f"  [{ticket_id}] -> {outcome['status']} "
           f"(conf: {outcome['confidence']:.0%}, "
-          f"tools: {outcome['tool_count']}, "
-          f"{duration_ms}ms)")
+          f"tools: {outcome['tool_count']}, {duration_ms}ms)")
 
     return outcome

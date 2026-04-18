@@ -1,7 +1,7 @@
 """
 main.py - Entry point for the ShopWave Support Agent.
 Run with: python main.py
-Processes tickets one by one with small delay to respect rate limits.
+Processes tickets in batches of 3 with 20s delay between batches.
 """
 
 import asyncio
@@ -24,26 +24,39 @@ async def run_agent():
     print("=" * 60)
 
     tickets = load_tickets("tickets.json")
-    print(f"\n Loaded {len(tickets)} tickets\n")
+    print(f"\n Loaded {len(tickets)} tickets")
+    print(" Processing in concurrent batches of 3...\n")
 
     audit_log = []
     results = []
     start_time = datetime.now()
 
-    for i, ticket in enumerate(tickets):
-        print(f"  Processing {ticket['ticket_id']} ({i+1}/{len(tickets)})...")
-        try:
-            result = await process_ticket(ticket, audit_log)
-            results.append(result)
-        except Exception as e:
-            results.append({"ticket_id": ticket["ticket_id"], "status": "error",
-                            "subject": ticket["subject"], "customer_email": ticket["customer_email"],
-                            "confidence": 0, "summary": str(e), "tools_called": [],
-                            "tool_count": 0, "duration_ms": 0,
-                            "processed_at": datetime.now().isoformat()})
-        # Small delay between tickets to avoid rate limits
-        if i < len(tickets) - 1:
-            time.sleep(5)
+    batch_size = 2
+    total_batches = (len(tickets) + batch_size - 1) // batch_size
+
+    for i in range(0, len(tickets), batch_size):
+        batch = tickets[i:i + batch_size]
+        batch_num = i // batch_size + 1
+        print(f"  Batch {batch_num}/{total_batches}: "
+              f"tickets {i+1}-{min(i+batch_size, len(tickets))}")
+
+        # Run batch concurrently
+        batch_results = await asyncio.gather(
+            *[process_ticket(ticket, audit_log) for ticket in batch],
+            return_exceptions=True
+        )
+
+        for r in batch_results:
+            if isinstance(r, Exception):
+                results.append({"status": "error", "summary": str(r),
+                                "confidence": 0, "tools_called": [],
+                                "tool_count": 0, "ticket_id": "unknown"})
+            else:
+                results.append(r)
+
+        if i + batch_size < len(tickets):
+            print(f"  Waiting 20s before next batch...")
+            time.sleep(15)
 
     end_time = datetime.now()
     total_seconds = (end_time - start_time).total_seconds()
@@ -55,6 +68,7 @@ async def run_agent():
             "finished_at": end_time.isoformat(),
             "total_duration_seconds": round(total_seconds, 2),
             "tickets_processed": len(tickets),
+            "concurrency": "batches of 3 via asyncio.gather"
         },
         "results": results,
         "audit_trail": audit_log
@@ -62,10 +76,11 @@ async def run_agent():
     with open("audit_log.json", "w") as f:
         json.dump(audit_output, f, indent=2, default=str)
 
-    # Save dead letter queue
-    failed = [r for r in results if r.get("status") in ["error", "escalated"]]
+    # Dead letter queue
+    failed = [r for r in results if r.get("status") in ["error"]]
     with open("dead_letter_queue.json", "w") as f:
-        json.dump({"failed_tickets": failed, "timestamp": datetime.now().isoformat()}, f, indent=2)
+        json.dump({"failed_tickets": failed,
+                   "timestamp": datetime.now().isoformat()}, f, indent=2)
 
     print("\n" + "=" * 60)
     print("  RESULTS SUMMARY")
@@ -87,18 +102,23 @@ async def run_agent():
     print("\n  TICKET-BY-TICKET BREAKDOWN\n")
 
     for r in results:
-        icon = {"resolved": "[OK]", "escalated": "[ESC]",
-                "needs_info": "[INFO]", "error": "[ERR]"}.get(r.get("status"), "[?]")
-        conf = r.get("confidence", 0)
-        print(f"  {icon} {r['ticket_id']} | {r.get('status','?'):10} | "
-              f"conf: {conf:.0%} | {r.get('summary','')[:55]}")
+        if isinstance(r, dict):
+            icon = {"resolved":   "[OK] ",
+                    "escalated":  "[ESC]",
+                    "needs_info": "[NFO]",
+                    "error":      "[ERR]"}.get(r.get("status"), "[?]  ")
+            conf = r.get("confidence", 0)
+            tid  = r.get("ticket_id", "???")
+            summ = r.get("summary", "")[:55]
+            print(f"  {icon} {tid} | {r.get('status','?'):10} | "
+                  f"conf: {conf:.0%} | {summ}")
 
     print("\nDone! Check audit_log.json for full reasoning trail.\n")
 
 
 if __name__ == "__main__":
-    if not os.environ.get("GROQ_API_KEY"):
-        print("ERROR: GROQ_API_KEY not set!")
-        print("Run: $env:GROQ_API_KEY='your_key_here'")
+    if not os.environ.get("GEMINI_API_KEY"):
+        print("ERROR: GEMINI_API_KEY not set!")
+        print("Run: $env:GEMINI_API_KEY='your_key_here'")
         exit(1)
     asyncio.run(run_agent())
