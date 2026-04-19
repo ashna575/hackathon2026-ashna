@@ -1,7 +1,10 @@
 """
 main.py - Entry point for the ShopWave Support Agent.
 Run with: python main.py
-Processes tickets in batches of 3 with 20s delay between batches.
+
+Set ONE of these before running:
+  $env:GROQ_API_KEY="your_key"      (try this first)
+  $env:GEMINI_API_KEY="your_key"    (fallback)
 """
 
 import asyncio
@@ -24,14 +27,15 @@ async def run_agent():
     print("=" * 60)
 
     tickets = load_tickets("tickets.json")
-    print(f"\n Loaded {len(tickets)} tickets")
-    print(" Processing in concurrent batches of 3...\n")
+    print(f"\n  Loaded {len(tickets)} tickets")
+    print("  Processing in concurrent batches of 3...\n")
 
     audit_log = []
     results = []
     start_time = datetime.now()
 
-    batch_size = 2
+    # ── CONCURRENCY: batch of 3 tickets at once ──
+    batch_size = 3
     total_batches = (len(tickets) + batch_size - 1) // batch_size
 
     for i in range(0, len(tickets), batch_size):
@@ -40,7 +44,6 @@ async def run_agent():
         print(f"  Batch {batch_num}/{total_batches}: "
               f"tickets {i+1}-{min(i+batch_size, len(tickets))}")
 
-        # Run batch concurrently
         batch_results = await asyncio.gather(
             *[process_ticket(ticket, audit_log) for ticket in batch],
             return_exceptions=True
@@ -56,7 +59,7 @@ async def run_agent():
 
         if i + batch_size < len(tickets):
             print(f"  Waiting 20s before next batch...")
-            time.sleep(15)
+            time.sleep(20)
 
     end_time = datetime.now()
     total_seconds = (end_time - start_time).total_seconds()
@@ -77,7 +80,7 @@ async def run_agent():
         json.dump(audit_output, f, indent=2, default=str)
 
     # Dead letter queue
-    failed = [r for r in results if r.get("status") in ["error"]]
+    failed = [r for r in results if r.get("status") == "error"]
     with open("dead_letter_queue.json", "w") as f:
         json.dump({"failed_tickets": failed,
                    "timestamp": datetime.now().isoformat()}, f, indent=2)
@@ -117,8 +120,10 @@ async def run_agent():
 
 
 if __name__ == "__main__":
-    if not os.environ.get("GEMINI_API_KEY"):
-        print("ERROR: GEMINI_API_KEY not set!")
-        print("Run: $env:GEMINI_API_KEY='your_key_here'")
+    if not os.environ.get("GROQ_API_KEY") and not os.environ.get("GEMINI_API_KEY"):
+        print("ERROR: No API key found!")
+        print("Set one of these:")
+        print("  $env:GROQ_API_KEY='your_key'")
+        print("  $env:GEMINI_API_KEY='your_key'")
         exit(1)
     asyncio.run(run_agent())

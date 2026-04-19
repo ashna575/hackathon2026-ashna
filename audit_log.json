@@ -1,400 +1,781 @@
 {
   "run_metadata": {
-    "started_at": "2026-04-19T02:33:26.112027",
-    "finished_at": "2026-04-19T02:35:48.487537",
-    "total_duration_seconds": 142.38,
+    "started_at": "2026-04-19T12:17:33.600829",
+    "finished_at": "2026-04-19T12:36:27.475304",
+    "total_duration_seconds": 1133.87,
     "tickets_processed": 20,
     "concurrency": "batches of 3 via asyncio.gather"
   },
   "results": [
     {
       "ticket_id": "TKT-001",
-      "status": "escalated",
-      "reason": "llm_error",
       "subject": "Refund request for headphones",
       "customer_email": "alice.turner@email.com",
-      "confidence": 0,
-      "summary": "Escalated due to LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is no",
-      "tools_called": [],
-      "tool_count": 0,
-      "duration_ms": 0,
-      "processed_at": "2026-04-19T02:33:27.244200"
+      "status": "pending",
+      "confidence": 0.8,
+      "summary": "Customer requested a refund for defective headphones, verifying order and product details to determine eligibility for a refund.",
+      "tools_called": [
+        "get_customer",
+        "get_order",
+        "get_product",
+        "check_refund_eligibility",
+        "search_knowledge_base",
+        "send_reply"
+      ],
+      "tool_count": 6,
+      "duration_ms": 179190,
+      "processed_at": "2026-04-19T12:20:32.791593"
     },
     {
       "ticket_id": "TKT-002",
-      "status": "escalated",
-      "reason": "llm_error",
       "subject": "I want to return my watch",
       "customer_email": "bob.mendes@email.com",
-      "confidence": 0,
-      "summary": "Escalated due to LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is no",
-      "tools_called": [],
-      "tool_count": 0,
-      "duration_ms": 0,
-      "processed_at": "2026-04-19T02:33:27.511287"
+      "status": "pending",
+      "confidence": 0.8,
+      "summary": "Customer is requesting a return and refund for their smart watch, checking order details, customer profile, product information, and refund eligibility",
+      "tools_called": [
+        "get_order",
+        "get_customer",
+        "get_product",
+        "check_refund_eligibility",
+        "search_knowledge_base"
+      ],
+      "tool_count": 5,
+      "duration_ms": 126206,
+      "processed_at": "2026-04-19T12:19:46.476297"
     },
     {
       "ticket_id": "TKT-003",
-      "status": "escalated",
-      "reason": "llm_error",
       "subject": "Coffee maker stopped working",
       "customer_email": "carol.nguyen@email.com",
-      "confidence": 0,
-      "summary": "Escalated due to LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is no",
-      "tools_called": [],
-      "tool_count": 0,
-      "duration_ms": 0,
-      "processed_at": "2026-04-19T02:33:43.261901"
+      "status": "pending",
+      "confidence": 0.8,
+      "summary": "Gathering information to determine the best course of action for the customer's defective coffee maker",
+      "tools_called": [
+        "get_order",
+        "get_customer",
+        "get_product",
+        "check_refund_eligibility",
+        "search_knowledge_base"
+      ],
+      "tool_count": 5,
+      "duration_ms": 201749,
+      "processed_at": "2026-04-19T12:21:19.817521"
     },
     {
       "ticket_id": "TKT-004",
       "status": "escalated",
-      "reason": "llm_error",
       "subject": "Wrong size delivered",
       "customer_email": "david.park@email.com",
       "confidence": 0,
-      "summary": "Escalated due to LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is no",
+      "summary": "Escalated due to LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3",
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T02:33:43.316462"
+      "processed_at": "2026-04-19T12:23:59.537773"
     },
     {
       "ticket_id": "TKT-005",
       "status": "escalated",
-      "reason": "llm_error",
       "subject": "Return request",
       "customer_email": "emma.collins@email.com",
       "confidence": 0,
-      "summary": "Escalated due to LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is no",
+      "summary": "Escalated due to LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3",
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T02:33:58.860497"
+      "processed_at": "2026-04-19T12:23:59.537827"
     },
     {
       "ticket_id": "TKT-006",
       "status": "escalated",
-      "reason": "llm_error",
       "subject": "I want to cancel",
       "customer_email": "frank.osei@email.com",
       "confidence": 0,
-      "summary": "Escalated due to LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is no",
+      "summary": "Escalated due to LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3",
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T02:33:59.131064"
+      "processed_at": "2026-04-19T12:23:59.596127"
     },
     {
       "ticket_id": "TKT-007",
       "status": "escalated",
-      "reason": "llm_error",
       "subject": "Laptop stand return",
       "customer_email": "grace.patel@email.com",
       "confidence": 0,
-      "summary": "Escalated due to LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is no",
+      "summary": "Escalated due to LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3",
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T02:34:14.635624"
+      "processed_at": "2026-04-19T12:26:37.749415"
     },
     {
       "ticket_id": "TKT-008",
       "status": "escalated",
-      "reason": "llm_error",
       "subject": "Lamp came broken",
       "customer_email": "henry.marsh@email.com",
       "confidence": 0,
-      "summary": "Escalated due to LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is no",
+      "summary": "Escalated due to LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3",
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T02:34:14.699331"
+      "processed_at": "2026-04-19T12:26:37.749466"
     },
     {
       "ticket_id": "TKT-009",
       "status": "escalated",
-      "reason": "llm_error",
       "subject": "Refund already done?",
       "customer_email": "irene.castillo@email.com",
       "confidence": 0,
-      "summary": "Escalated due to LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is no",
+      "summary": "Escalated due to LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3",
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T02:34:30.194834"
+      "processed_at": "2026-04-19T12:26:37.812690"
     },
     {
       "ticket_id": "TKT-010",
       "status": "escalated",
-      "reason": "llm_error",
       "subject": "Where is my order?",
       "customer_email": "james.wu@email.com",
       "confidence": 0,
-      "summary": "Escalated due to LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is no",
+      "summary": "Escalated due to LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3",
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T02:34:30.252402"
+      "processed_at": "2026-04-19T12:29:15.576131"
     },
     {
       "ticket_id": "TKT-011",
       "status": "escalated",
-      "reason": "llm_error",
       "subject": "Wrong colour watch received",
       "customer_email": "alice.turner@email.com",
       "confidence": 0,
-      "summary": "Escalated due to LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is no",
+      "summary": "Escalated due to LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3",
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T02:34:45.818992"
+      "processed_at": "2026-04-19T12:29:15.641942"
     },
     {
       "ticket_id": "TKT-012",
       "status": "escalated",
-      "reason": "llm_error",
       "subject": "Cancel my new order",
       "customer_email": "carol.nguyen@email.com",
       "confidence": 0,
-      "summary": "Escalated due to LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is no",
+      "summary": "Escalated due to LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3",
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T02:34:45.818917"
+      "processed_at": "2026-04-19T12:29:15.641864"
     },
     {
       "ticket_id": "TKT-013",
       "status": "escalated",
-      "reason": "llm_error",
       "subject": "Return for bluetooth speaker",
       "customer_email": "grace.patel@email.com",
       "confidence": 0,
-      "summary": "Escalated due to LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is no",
+      "summary": "Escalated due to LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3",
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T02:35:01.310884"
+      "processed_at": "2026-04-19T12:31:54.917166"
     },
     {
       "ticket_id": "TKT-014",
       "status": "escalated",
-      "reason": "llm_error",
       "subject": "Thinking about returning my watch",
       "customer_email": "henry.marsh@email.com",
       "confidence": 0,
-      "summary": "Escalated due to LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is no",
+      "summary": "Escalated due to LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3",
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T02:35:01.371223"
+      "processed_at": "2026-04-19T12:31:54.917188"
     },
     {
       "ticket_id": "TKT-015",
       "status": "escalated",
-      "reason": "llm_error",
       "subject": "Damaged coffee maker",
       "customer_email": "emma.collins@email.com",
       "confidence": 0,
-      "summary": "Escalated due to LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is no",
+      "summary": "Escalated due to LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3",
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T02:35:17.294079"
+      "processed_at": "2026-04-19T12:31:54.977660"
     },
     {
       "ticket_id": "TKT-016",
       "status": "escalated",
-      "reason": "llm_error",
       "subject": "Refund request",
       "customer_email": "unknown.user@email.com",
       "confidence": 0,
-      "summary": "Escalated due to LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is no",
+      "summary": "Escalated due to LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3",
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T02:35:17.349803"
+      "processed_at": "2026-04-19T12:34:35.024432"
     },
     {
       "ticket_id": "TKT-017",
       "status": "escalated",
-      "reason": "llm_error",
       "subject": "Refund for shoes",
       "customer_email": "david.park@email.com",
       "confidence": 0,
-      "summary": "Escalated due to LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is no",
+      "summary": "Escalated due to LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3",
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T02:35:32.830251"
+      "processed_at": "2026-04-19T12:34:35.024453"
     },
     {
       "ticket_id": "TKT-018",
       "status": "escalated",
-      "reason": "llm_error",
       "subject": "Urgent refund needed",
       "customer_email": "bob.mendes@email.com",
       "confidence": 0,
-      "summary": "Escalated due to LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is no",
+      "summary": "Escalated due to LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3",
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T02:35:32.891130"
+      "processed_at": "2026-04-19T12:34:35.086344"
     },
     {
       "ticket_id": "TKT-019",
       "status": "escalated",
-      "reason": "llm_error",
       "subject": "General question about returns",
       "customer_email": "irene.castillo@email.com",
       "confidence": 0,
-      "summary": "Escalated due to LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is no",
+      "summary": "Escalated due to LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3",
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T02:35:48.432874"
+      "processed_at": "2026-04-19T12:36:27.412808"
     },
     {
       "ticket_id": "TKT-020",
       "status": "escalated",
-      "reason": "llm_error",
       "subject": "my thing is broken pls help",
       "customer_email": "james.wu@email.com",
       "confidence": 0,
-      "summary": "Escalated due to LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is no",
+      "summary": "Escalated due to LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3",
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T02:35:48.487461"
+      "processed_at": "2026-04-19T12:36:27.475112"
     }
   ],
   "audit_trail": [
     {
       "ticket_id": "TKT-001",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T02:33:26.113734",
+      "timestamp": "2026-04-19T12:17:33.601359",
       "subject": "Refund request for headphones",
       "customer_email": "alice.turner@email.com"
     },
     {
       "ticket_id": "TKT-001",
-      "event": "llm_error",
-      "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
-      "timestamp": "2026-04-19T02:33:26.949892"
+      "event": "agent_plan",
+      "thinking": "The customer is requesting a refund for a pair of headphones that stopped working after a week. To resolve this ticket, I need to verify the customer's order, check the product's warranty and return window, and determine if the customer is eligible for a refund.",
+      "planned_tools": [
+        "get_customer",
+        "get_order",
+        "get_product",
+        "check_refund_eligibility",
+        "search_knowledge_base",
+        "send_reply"
+      ],
+      "confidence": 0.8,
+      "timestamp": "2026-04-19T12:17:40.269552"
+    },
+    {
+      "ticket_id": "TKT-001",
+      "timestamp": "2026-04-19T12:17:40.269611",
+      "tool": "get_customer",
+      "args": {
+        "email": "alice.turner@email.com"
+      },
+      "error": "get_customer server error: 503 Service Unavailable",
+      "status": "failed",
+      "attempt": 1
     },
     {
       "ticket_id": "TKT-002",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T02:33:26.950059",
+      "timestamp": "2026-04-19T12:17:40.269702",
       "subject": "I want to return my watch",
       "customer_email": "bob.mendes@email.com"
     },
     {
       "ticket_id": "TKT-002",
-      "event": "llm_error",
-      "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
-      "timestamp": "2026-04-19T02:33:27.243940"
-    },
-    {
-      "ticket_id": "TKT-002",
-      "timestamp": "2026-04-19T02:33:27.244007",
-      "tool": "escalate",
-      "args": {
-        "ticket_id": "TKT-002",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
-        "priority": "medium"
-      },
-      "error": "escalate server error: 503 Service Unavailable",
-      "status": "failed",
-      "attempt": 1
-    },
-    {
-      "ticket_id": "TKT-001",
-      "timestamp": "2026-04-19T02:33:27.244178",
-      "tool": "escalate",
-      "args": {
-        "ticket_id": "TKT-001",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
-        "priority": "medium"
-      },
-      "result": {
-        "success": true,
-        "ticket_id": "TKT-001",
-        "escalation_id": "ESC-TKT-001-MEDIUM",
-        "message": "Ticket escalated with medium priority. Human agent will review shortly."
-      },
-      "status": "success",
-      "attempt": 1
-    },
-    {
-      "ticket_id": "TKT-002",
-      "timestamp": "2026-04-19T02:33:27.511247",
-      "tool": "escalate",
-      "args": {
-        "ticket_id": "TKT-002",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
-        "priority": "medium"
-      },
-      "result": {
-        "success": true,
-        "ticket_id": "TKT-002",
-        "escalation_id": "ESC-TKT-002-MEDIUM",
-        "message": "Ticket escalated with medium priority. Human agent will review shortly."
-      },
-      "status": "success",
-      "attempt": 2
+      "event": "agent_plan",
+      "thinking": "The customer is requesting a return and refund for their smart watch. To resolve this, I need to check the order details, customer profile, and product information. I also need to verify the refund eligibility before taking any further action.",
+      "planned_tools": [
+        "get_order",
+        "get_customer",
+        "get_product",
+        "check_refund_eligibility",
+        "search_knowledge_base"
+      ],
+      "confidence": 0.8,
+      "timestamp": "2026-04-19T12:17:58.067576"
     },
     {
       "ticket_id": "TKT-003",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T02:33:42.512472",
+      "timestamp": "2026-04-19T12:17:58.067659",
       "subject": "Coffee maker stopped working",
       "customer_email": "carol.nguyen@email.com"
     },
     {
       "ticket_id": "TKT-003",
-      "event": "llm_error",
-      "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
-      "timestamp": "2026-04-19T02:33:42.702639"
+      "event": "agent_plan",
+      "thinking": "The customer is reporting a defective coffee maker and is requesting a replacement or refund. To resolve this issue, I need to check the order details, customer profile, and product information. I also need to verify if the customer is eligible for a refund.",
+      "planned_tools": [
+        "get_order",
+        "get_customer",
+        "get_product",
+        "check_refund_eligibility",
+        "search_knowledge_base"
+      ],
+      "confidence": 0.8,
+      "timestamp": "2026-04-19T12:18:59.480474"
+    },
+    {
+      "ticket_id": "TKT-002",
+      "timestamp": "2026-04-19T12:18:59.480590",
+      "tool": "get_order",
+      "args": {
+        "order_id": "ORD-1002"
+      },
+      "result": {
+        "success": true,
+        "data": {
+          "order_id": "ORD-1002",
+          "customer_email": "bob.mendes@email.com",
+          "product_id": "PRD-002",
+          "status": "delivered",
+          "amount": 199.99,
+          "delivered_at": "2024-03-04",
+          "created_at": "2024-03-01"
+        }
+      },
+      "status": "success",
+      "attempt": 1
+    },
+    {
+      "ticket_id": "TKT-003",
+      "timestamp": "2026-04-19T12:18:59.536626",
+      "tool": "get_order",
+      "args": {
+        "order_id": "ORD-1003"
+      },
+      "result": {
+        "success": true,
+        "data": {
+          "order_id": "ORD-1003",
+          "customer_email": "carol.nguyen@email.com",
+          "product_id": "PRD-003",
+          "status": "delivered",
+          "amount": 75.0,
+          "delivered_at": "2024-02-20",
+          "created_at": "2024-02-18"
+        }
+      },
+      "status": "success",
+      "attempt": 1
+    },
+    {
+      "ticket_id": "TKT-001",
+      "timestamp": "2026-04-19T12:18:59.536752",
+      "tool": "get_customer",
+      "args": {
+        "email": "alice.turner@email.com"
+      },
+      "result": {
+        "success": true,
+        "data": {
+          "email": "alice.turner@email.com",
+          "name": "Alice Turner",
+          "tier": "standard",
+          "vip_exception": false,
+          "orders": [
+            "ORD-1001",
+            "ORD-1011"
+          ]
+        }
+      },
+      "status": "success",
+      "attempt": 2
+    },
+    {
+      "ticket_id": "TKT-002",
+      "timestamp": "2026-04-19T12:18:59.536793",
+      "tool": "get_customer",
+      "args": {
+        "email": "bob.mendes@email.com"
+      },
+      "result": {
+        "success": true,
+        "data": {
+          "email": "bob.mendes@email.com",
+          "name": "Bob Mendes",
+          "tier": "standard",
+          "vip_exception": false,
+          "orders": [
+            "ORD-1002"
+          ]
+        }
+      },
+      "status": "success",
+      "attempt": 1
+    },
+    {
+      "ticket_id": "TKT-003",
+      "timestamp": "2026-04-19T12:18:59.599571",
+      "tool": "get_customer",
+      "args": {
+        "email": "carol.nguyen@email.com"
+      },
+      "result": {
+        "success": true,
+        "data": {
+          "email": "carol.nguyen@email.com",
+          "name": "Carol Nguyen",
+          "tier": "standard",
+          "vip_exception": false,
+          "orders": [
+            "ORD-1003",
+            "ORD-1012"
+          ]
+        }
+      },
+      "status": "success",
+      "attempt": 1
+    },
+    {
+      "ticket_id": "TKT-001",
+      "timestamp": "2026-04-19T12:18:59.599655",
+      "tool": "get_order",
+      "args": {
+        "order_id": "ORD-1001"
+      },
+      "result": {
+        "success": true,
+        "data": {
+          "order_id": "ORD-1001",
+          "customer_email": "alice.turner@email.com",
+          "product_id": "PRD-001",
+          "status": "delivered",
+          "amount": 89.99,
+          "delivered_at": "2024-02-10",
+          "created_at": "2024-02-08"
+        }
+      },
+      "status": "success",
+      "attempt": 1
+    },
+    {
+      "ticket_id": "TKT-002",
+      "timestamp": "2026-04-19T12:18:59.599689",
+      "tool": "get_product",
+      "args": {
+        "product_id": "unknown"
+      },
+      "result": {
+        "error": "Product unknown not found",
+        "product_id": "unknown"
+      },
+      "status": "success",
+      "attempt": 1
+    },
+    {
+      "ticket_id": "TKT-003",
+      "timestamp": "2026-04-19T12:18:59.662838",
+      "tool": "get_product",
+      "args": {
+        "product_id": "BrewMaster"
+      },
+      "result": {
+        "error": "Product BrewMaster not found",
+        "product_id": "BrewMaster"
+      },
+      "status": "success",
+      "attempt": 1
+    },
+    {
+      "ticket_id": "TKT-001",
+      "timestamp": "2026-04-19T12:18:59.662917",
+      "tool": "get_product",
+      "args": {
+        "product_id": "product_id_from_get_order"
+      },
+      "result": {
+        "error": "Product product_id_from_get_order not found",
+        "product_id": "product_id_from_get_order"
+      },
+      "status": "success",
+      "attempt": 1
+    },
+    {
+      "ticket_id": "TKT-002",
+      "timestamp": "2026-04-19T12:18:59.667575",
+      "tool": "check_refund_eligibility",
+      "args": {
+        "order_id": "ORD-1002"
+      },
+      "result": {
+        "eligible": true,
+        "reason": "Order is within return window and eligible for refund",
+        "amount": 199.99
+      },
+      "status": "success",
+      "attempt": 1
+    },
+    {
+      "ticket_id": "TKT-001",
+      "timestamp": "2026-04-19T12:18:59.725989",
+      "tool": "check_refund_eligibility",
+      "args": {
+        "order_id": "ORD-1001"
+      },
+      "result": {
+        "eligible": false,
+        "reason": "Return window expired (34 days since delivery, window is 30 days)",
+        "days_since_delivery": 34,
+        "return_window": 30
+      },
+      "status": "success",
+      "attempt": 1
+    },
+    {
+      "ticket_id": "TKT-002",
+      "timestamp": "2026-04-19T12:18:59.726096",
+      "tool": "search_knowledge_base",
+      "args": {
+        "query": "return policy for smart watches"
+      },
+      "result": {
+        "success": true,
+        "data": [
+          {
+            "topic": "return policy",
+            "content": "Customers can return most items within 30 days of delivery. Electronics must be unused and in original packaging. Some products have extended return windows (e.g., laptop stands: 60 days). Items registered online may not be eligible for return."
+          },
+          {
+            "topic": "vip policy",
+            "content": "VIP customers may receive extended return windows and exceptions on a case-by-case basis as noted in their account."
+          }
+        ],
+        "query": "return policy for smart watches"
+      },
+      "status": "success",
+      "attempt": 1
+    },
+    {
+      "ticket_id": "TKT-002",
+      "event": "ticket_resolved",
+      "outcome": {
+        "ticket_id": "TKT-002",
+        "subject": "I want to return my watch",
+        "customer_email": "bob.mendes@email.com",
+        "status": "pending",
+        "confidence": 0.8,
+        "summary": "Customer is requesting a return and refund for their smart watch, checking order details, customer profile, product information, and refund eligibility",
+        "tools_called": [
+          "get_order",
+          "get_customer",
+          "get_product",
+          "check_refund_eligibility",
+          "search_knowledge_base"
+        ],
+        "tool_count": 5,
+        "duration_ms": 126206,
+        "processed_at": "2026-04-19T12:19:46.476297"
+      },
+      "timestamp": "2026-04-19T12:19:46.476297"
+    },
+    {
+      "ticket_id": "TKT-001",
+      "timestamp": "2026-04-19T12:19:46.476821",
+      "tool": "search_knowledge_base",
+      "args": {
+        "query": "return policy for defective products"
+      },
+      "result": {
+        "success": true,
+        "data": [
+          {
+            "topic": "return policy",
+            "content": "Customers can return most items within 30 days of delivery. Electronics must be unused and in original packaging. Some products have extended return windows (e.g., laptop stands: 60 days). Items registered online may not be eligible for return."
+          },
+          {
+            "topic": "vip policy",
+            "content": "VIP customers may receive extended return windows and exceptions on a case-by-case basis as noted in their account."
+          }
+        ],
+        "query": "return policy for defective products"
+      },
+      "status": "success",
+      "attempt": 1
+    },
+    {
+      "ticket_id": "TKT-003",
+      "timestamp": "2026-04-19T12:19:46.476899",
+      "tool": "check_refund_eligibility",
+      "args": {
+        "order_id": "ORD-1003"
+      },
+      "error": "check_refund_eligibility timed out after 500ms (guaranteed failure for ORD-1003)",
+      "status": "failed",
+      "attempt": 1
+    },
+    {
+      "ticket_id": "TKT-001",
+      "timestamp": "2026-04-19T12:19:46.527797",
+      "tool": "send_reply",
+      "args": {
+        "ticket_id": "TKT-001",
+        "message": "Thank you for reaching out to us about your defective headphones. We are processing your refund request and will get back to you soon."
+      },
+      "result": {
+        "success": true,
+        "ticket_id": "TKT-001",
+        "message": "Reply sent to customer successfully"
+      },
+      "status": "success",
+      "attempt": 1
+    },
+    {
+      "ticket_id": "TKT-001",
+      "event": "ticket_resolved",
+      "outcome": {
+        "ticket_id": "TKT-001",
+        "subject": "Refund request for headphones",
+        "customer_email": "alice.turner@email.com",
+        "status": "pending",
+        "confidence": 0.8,
+        "summary": "Customer requested a refund for defective headphones, verifying order and product details to determine eligibility for a refund.",
+        "tools_called": [
+          "get_customer",
+          "get_order",
+          "get_product",
+          "check_refund_eligibility",
+          "search_knowledge_base",
+          "send_reply"
+        ],
+        "tool_count": 6,
+        "duration_ms": 179190,
+        "processed_at": "2026-04-19T12:20:32.791593"
+      },
+      "timestamp": "2026-04-19T12:20:32.791593"
+    },
+    {
+      "ticket_id": "TKT-003",
+      "timestamp": "2026-04-19T12:20:33.302601",
+      "tool": "check_refund_eligibility",
+      "args": {
+        "order_id": "ORD-1003"
+      },
+      "error": "check_refund_eligibility timed out after 500ms (guaranteed failure for ORD-1003)",
+      "status": "failed",
+      "attempt": 2
+    },
+    {
+      "ticket_id": "TKT-003",
+      "timestamp": "2026-04-19T12:20:33.367126",
+      "tool": "search_knowledge_base",
+      "args": {
+        "query": "coffee maker return policy"
+      },
+      "result": {
+        "success": true,
+        "data": [
+          {
+            "topic": "return policy",
+            "content": "Customers can return most items within 30 days of delivery. Electronics must be unused and in original packaging. Some products have extended return windows (e.g., laptop stands: 60 days). Items registered online may not be eligible for return."
+          },
+          {
+            "topic": "vip policy",
+            "content": "VIP customers may receive extended return windows and exceptions on a case-by-case basis as noted in their account."
+          }
+        ],
+        "query": "coffee maker return policy"
+      },
+      "status": "success",
+      "attempt": 1
+    },
+    {
+      "ticket_id": "TKT-003",
+      "event": "ticket_resolved",
+      "outcome": {
+        "ticket_id": "TKT-003",
+        "subject": "Coffee maker stopped working",
+        "customer_email": "carol.nguyen@email.com",
+        "status": "pending",
+        "confidence": 0.8,
+        "summary": "Gathering information to determine the best course of action for the customer's defective coffee maker",
+        "tools_called": [
+          "get_order",
+          "get_customer",
+          "get_product",
+          "check_refund_eligibility",
+          "search_knowledge_base"
+        ],
+        "tool_count": 5,
+        "duration_ms": 201749,
+        "processed_at": "2026-04-19T12:21:19.817521"
+      },
+      "timestamp": "2026-04-19T12:21:19.817521"
     },
     {
       "ticket_id": "TKT-004",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T02:33:42.702768",
+      "timestamp": "2026-04-19T12:21:39.818900",
       "subject": "Wrong size delivered",
       "customer_email": "david.park@email.com"
     },
     {
       "ticket_id": "TKT-004",
       "event": "llm_error",
-      "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
-      "timestamp": "2026-04-19T02:33:43.261726"
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99649, Requested 2568. Please try again in 31m55.487999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T12:22:26.500468"
     },
     {
-      "ticket_id": "TKT-003",
-      "timestamp": "2026-04-19T02:33:43.261889",
-      "tool": "escalate",
-      "args": {
-        "ticket_id": "TKT-003",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
-        "priority": "medium"
-      },
-      "result": {
-        "success": true,
-        "ticket_id": "TKT-003",
-        "escalation_id": "ESC-TKT-003-MEDIUM",
-        "message": "Ticket escalated with medium priority. Human agent will review shortly."
-      },
-      "status": "success",
-      "attempt": 1
+      "ticket_id": "TKT-005",
+      "event": "ticket_received",
+      "timestamp": "2026-04-19T12:22:26.500561",
+      "subject": "Return request",
+      "customer_email": "emma.collins@email.com"
+    },
+    {
+      "ticket_id": "TKT-005",
+      "event": "llm_error",
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99594, Requested 2570. Please try again in 31m9.696s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T12:23:13.494788"
+    },
+    {
+      "ticket_id": "TKT-006",
+      "event": "ticket_received",
+      "timestamp": "2026-04-19T12:23:13.494874",
+      "subject": "I want to cancel",
+      "customer_email": "frank.osei@email.com"
+    },
+    {
+      "ticket_id": "TKT-006",
+      "event": "llm_error",
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99541, Requested 2548. Please try again in 30m4.896s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T12:23:59.537573"
     },
     {
       "ticket_id": "TKT-004",
-      "timestamp": "2026-04-19T02:33:43.316355",
+      "timestamp": "2026-04-19T12:23:59.537762",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-004",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
+        "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
         "priority": "medium"
       },
       "result": {
@@ -408,50 +789,11 @@
     },
     {
       "ticket_id": "TKT-005",
-      "event": "ticket_received",
-      "timestamp": "2026-04-19T02:33:58.317683",
-      "subject": "Return request",
-      "customer_email": "emma.collins@email.com"
-    },
-    {
-      "ticket_id": "TKT-005",
-      "event": "llm_error",
-      "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
-      "timestamp": "2026-04-19T02:33:58.568577"
-    },
-    {
-      "ticket_id": "TKT-006",
-      "event": "ticket_received",
-      "timestamp": "2026-04-19T02:33:58.568671",
-      "subject": "I want to cancel",
-      "customer_email": "frank.osei@email.com"
-    },
-    {
-      "ticket_id": "TKT-006",
-      "event": "llm_error",
-      "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
-      "timestamp": "2026-04-19T02:33:58.860179"
-    },
-    {
-      "ticket_id": "TKT-006",
-      "timestamp": "2026-04-19T02:33:58.860237",
-      "tool": "escalate",
-      "args": {
-        "ticket_id": "TKT-006",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
-        "priority": "medium"
-      },
-      "error": "escalate server error: 503 Service Unavailable",
-      "status": "failed",
-      "attempt": 1
-    },
-    {
-      "ticket_id": "TKT-005",
-      "timestamp": "2026-04-19T02:33:58.860476",
+      "timestamp": "2026-04-19T12:23:59.537822",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-005",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
+        "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
         "priority": "medium"
       },
       "result": {
@@ -465,11 +807,11 @@
     },
     {
       "ticket_id": "TKT-006",
-      "timestamp": "2026-04-19T02:33:59.131028",
+      "timestamp": "2026-04-19T12:23:59.596113",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-006",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
+        "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
         "priority": "medium"
       },
       "result": {
@@ -479,41 +821,54 @@
         "message": "Ticket escalated with medium priority. Human agent will review shortly."
       },
       "status": "success",
-      "attempt": 2
+      "attempt": 1
     },
     {
       "ticket_id": "TKT-007",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T02:34:14.133093",
+      "timestamp": "2026-04-19T12:24:19.597070",
       "subject": "Laptop stand return",
       "customer_email": "grace.patel@email.com"
     },
     {
       "ticket_id": "TKT-007",
       "event": "llm_error",
-      "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
-      "timestamp": "2026-04-19T02:34:14.338065"
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99464, Requested 2561. Please try again in 29m9.6s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T12:25:06.042535"
     },
     {
       "ticket_id": "TKT-008",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T02:34:14.338145",
+      "timestamp": "2026-04-19T12:25:06.042671",
       "subject": "Lamp came broken",
       "customer_email": "henry.marsh@email.com"
     },
     {
       "ticket_id": "TKT-008",
       "event": "llm_error",
-      "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
-      "timestamp": "2026-04-19T02:34:14.635383"
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99411, Requested 2557. Please try again in 28m20.351999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T12:25:51.913336"
+    },
+    {
+      "ticket_id": "TKT-009",
+      "event": "ticket_received",
+      "timestamp": "2026-04-19T12:25:51.913409",
+      "subject": "Refund already done?",
+      "customer_email": "irene.castillo@email.com"
+    },
+    {
+      "ticket_id": "TKT-009",
+      "event": "llm_error",
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99358, Requested 2564. Please try again in 27m40.608s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T12:26:37.749240"
     },
     {
       "ticket_id": "TKT-007",
-      "timestamp": "2026-04-19T02:34:14.635599",
+      "timestamp": "2026-04-19T12:26:37.749405",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-007",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
+        "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
         "priority": "medium"
       },
       "result": {
@@ -527,11 +882,11 @@
     },
     {
       "ticket_id": "TKT-008",
-      "timestamp": "2026-04-19T02:34:14.699285",
+      "timestamp": "2026-04-19T12:26:37.749459",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-008",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
+        "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
         "priority": "medium"
       },
       "result": {
@@ -545,37 +900,11 @@
     },
     {
       "ticket_id": "TKT-009",
-      "event": "ticket_received",
-      "timestamp": "2026-04-19T02:34:29.700458",
-      "subject": "Refund already done?",
-      "customer_email": "irene.castillo@email.com"
-    },
-    {
-      "ticket_id": "TKT-009",
-      "event": "llm_error",
-      "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
-      "timestamp": "2026-04-19T02:34:29.915452"
-    },
-    {
-      "ticket_id": "TKT-010",
-      "event": "ticket_received",
-      "timestamp": "2026-04-19T02:34:29.915546",
-      "subject": "Where is my order?",
-      "customer_email": "james.wu@email.com"
-    },
-    {
-      "ticket_id": "TKT-010",
-      "event": "llm_error",
-      "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
-      "timestamp": "2026-04-19T02:34:30.194635"
-    },
-    {
-      "ticket_id": "TKT-009",
-      "timestamp": "2026-04-19T02:34:30.194815",
+      "timestamp": "2026-04-19T12:26:37.812677",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-009",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
+        "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
         "priority": "medium"
       },
       "result": {
@@ -589,11 +918,63 @@
     },
     {
       "ticket_id": "TKT-010",
-      "timestamp": "2026-04-19T02:34:30.252373",
+      "event": "ticket_received",
+      "timestamp": "2026-04-19T12:26:57.813970",
+      "subject": "Where is my order?",
+      "customer_email": "james.wu@email.com"
+    },
+    {
+      "ticket_id": "TKT-010",
+      "event": "llm_error",
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99281, Requested 2555. Please try again in 26m26.304s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T12:27:43.859642"
+    },
+    {
+      "ticket_id": "TKT-011",
+      "event": "ticket_received",
+      "timestamp": "2026-04-19T12:27:43.859736",
+      "subject": "Wrong colour watch received",
+      "customer_email": "alice.turner@email.com"
+    },
+    {
+      "ticket_id": "TKT-011",
+      "event": "llm_error",
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99228, Requested 2558. Please try again in 25m43.104s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T12:28:29.690345"
+    },
+    {
+      "ticket_id": "TKT-011",
+      "timestamp": "2026-04-19T12:28:29.690699",
+      "tool": "escalate",
+      "args": {
+        "ticket_id": "TKT-011",
+        "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
+        "priority": "medium"
+      },
+      "error": "escalate server error: 503 Service Unavailable",
+      "status": "failed",
+      "attempt": 1
+    },
+    {
+      "ticket_id": "TKT-012",
+      "event": "ticket_received",
+      "timestamp": "2026-04-19T12:28:29.690819",
+      "subject": "Cancel my new order",
+      "customer_email": "carol.nguyen@email.com"
+    },
+    {
+      "ticket_id": "TKT-012",
+      "event": "llm_error",
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99175, Requested 2557. Please try again in 24m56.447999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T12:29:15.575963"
+    },
+    {
+      "ticket_id": "TKT-010",
+      "timestamp": "2026-04-19T12:29:15.576120",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-010",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
+        "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
         "priority": "medium"
       },
       "result": {
@@ -606,51 +987,12 @@
       "attempt": 1
     },
     {
-      "ticket_id": "TKT-011",
-      "event": "ticket_received",
-      "timestamp": "2026-04-19T02:34:45.253823",
-      "subject": "Wrong colour watch received",
-      "customer_email": "alice.turner@email.com"
-    },
-    {
-      "ticket_id": "TKT-011",
-      "event": "llm_error",
-      "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
-      "timestamp": "2026-04-19T02:34:45.456116"
-    },
-    {
-      "ticket_id": "TKT-011",
-      "timestamp": "2026-04-19T02:34:45.456172",
-      "tool": "escalate",
-      "args": {
-        "ticket_id": "TKT-011",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
-        "priority": "medium"
-      },
-      "error": "escalate server error: 503 Service Unavailable",
-      "status": "failed",
-      "attempt": 1
-    },
-    {
       "ticket_id": "TKT-012",
-      "event": "ticket_received",
-      "timestamp": "2026-04-19T02:34:45.456243",
-      "subject": "Cancel my new order",
-      "customer_email": "carol.nguyen@email.com"
-    },
-    {
-      "ticket_id": "TKT-012",
-      "event": "llm_error",
-      "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
-      "timestamp": "2026-04-19T02:34:45.755327"
-    },
-    {
-      "ticket_id": "TKT-012",
-      "timestamp": "2026-04-19T02:34:45.818778",
+      "timestamp": "2026-04-19T12:29:15.641848",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-012",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
+        "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
         "priority": "medium"
       },
       "result": {
@@ -664,11 +1006,11 @@
     },
     {
       "ticket_id": "TKT-011",
-      "timestamp": "2026-04-19T02:34:45.818972",
+      "timestamp": "2026-04-19T12:29:15.641933",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-011",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
+        "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
         "priority": "medium"
       },
       "result": {
@@ -683,36 +1025,49 @@
     {
       "ticket_id": "TKT-013",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T02:35:00.820367",
+      "timestamp": "2026-04-19T12:29:35.643129",
       "subject": "Return for bluetooth speaker",
       "customer_email": "grace.patel@email.com"
     },
     {
       "ticket_id": "TKT-013",
       "event": "llm_error",
-      "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
-      "timestamp": "2026-04-19T02:35:01.014616"
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99099, Requested 2553. Please try again in 23m47.328s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T12:30:21.702163"
     },
     {
       "ticket_id": "TKT-014",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T02:35:01.014713",
+      "timestamp": "2026-04-19T12:30:21.702235",
       "subject": "Thinking about returning my watch",
       "customer_email": "henry.marsh@email.com"
     },
     {
       "ticket_id": "TKT-014",
       "event": "llm_error",
-      "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
-      "timestamp": "2026-04-19T02:35:01.310599"
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99045, Requested 2561. Please try again in 23m7.584s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T12:31:07.822698"
+    },
+    {
+      "ticket_id": "TKT-015",
+      "event": "ticket_received",
+      "timestamp": "2026-04-19T12:31:07.822757",
+      "subject": "Damaged coffee maker",
+      "customer_email": "emma.collins@email.com"
+    },
+    {
+      "ticket_id": "TKT-015",
+      "event": "llm_error",
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98991, Requested 2565. Please try again in 22m24.384s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T12:31:54.917082"
     },
     {
       "ticket_id": "TKT-013",
-      "timestamp": "2026-04-19T02:35:01.310862",
+      "timestamp": "2026-04-19T12:31:54.917163",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-013",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
+        "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
         "priority": "medium"
       },
       "result": {
@@ -726,11 +1081,11 @@
     },
     {
       "ticket_id": "TKT-014",
-      "timestamp": "2026-04-19T02:35:01.371149",
+      "timestamp": "2026-04-19T12:31:54.917186",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-014",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
+        "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
         "priority": "medium"
       },
       "result": {
@@ -744,37 +1099,11 @@
     },
     {
       "ticket_id": "TKT-015",
-      "event": "ticket_received",
-      "timestamp": "2026-04-19T02:35:16.372525",
-      "subject": "Damaged coffee maker",
-      "customer_email": "emma.collins@email.com"
-    },
-    {
-      "ticket_id": "TKT-015",
-      "event": "llm_error",
-      "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
-      "timestamp": "2026-04-19T02:35:16.609814"
-    },
-    {
-      "ticket_id": "TKT-016",
-      "event": "ticket_received",
-      "timestamp": "2026-04-19T02:35:16.609905",
-      "subject": "Refund request",
-      "customer_email": "unknown.user@email.com"
-    },
-    {
-      "ticket_id": "TKT-016",
-      "event": "llm_error",
-      "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
-      "timestamp": "2026-04-19T02:35:17.293837"
-    },
-    {
-      "ticket_id": "TKT-015",
-      "timestamp": "2026-04-19T02:35:17.294051",
+      "timestamp": "2026-04-19T12:31:54.977647",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-015",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
+        "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
         "priority": "medium"
       },
       "result": {
@@ -788,11 +1117,50 @@
     },
     {
       "ticket_id": "TKT-016",
-      "timestamp": "2026-04-19T02:35:17.349769",
+      "event": "ticket_received",
+      "timestamp": "2026-04-19T12:32:14.978813",
+      "subject": "Refund request",
+      "customer_email": "unknown.user@email.com"
+    },
+    {
+      "ticket_id": "TKT-016",
+      "event": "llm_error",
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98913, Requested 2534. Please try again in 20m50.208s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T12:33:02.190630"
+    },
+    {
+      "ticket_id": "TKT-017",
+      "event": "ticket_received",
+      "timestamp": "2026-04-19T12:33:02.191221",
+      "subject": "Refund for shoes",
+      "customer_email": "david.park@email.com"
+    },
+    {
+      "ticket_id": "TKT-017",
+      "event": "llm_error",
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98859, Requested 2553. Please try again in 20m19.968s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T12:33:48.500574"
+    },
+    {
+      "ticket_id": "TKT-018",
+      "event": "ticket_received",
+      "timestamp": "2026-04-19T12:33:48.500626",
+      "subject": "Urgent refund needed",
+      "customer_email": "bob.mendes@email.com"
+    },
+    {
+      "ticket_id": "TKT-018",
+      "event": "llm_error",
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98805, Requested 2571. Please try again in 19m48.864s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T12:34:35.024347"
+    },
+    {
+      "ticket_id": "TKT-016",
+      "timestamp": "2026-04-19T12:34:35.024428",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-016",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
+        "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
         "priority": "medium"
       },
       "result": {
@@ -806,37 +1174,11 @@
     },
     {
       "ticket_id": "TKT-017",
-      "event": "ticket_received",
-      "timestamp": "2026-04-19T02:35:32.350814",
-      "subject": "Refund for shoes",
-      "customer_email": "david.park@email.com"
-    },
-    {
-      "ticket_id": "TKT-017",
-      "event": "llm_error",
-      "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
-      "timestamp": "2026-04-19T02:35:32.609230"
-    },
-    {
-      "ticket_id": "TKT-018",
-      "event": "ticket_received",
-      "timestamp": "2026-04-19T02:35:32.609341",
-      "subject": "Urgent refund needed",
-      "customer_email": "bob.mendes@email.com"
-    },
-    {
-      "ticket_id": "TKT-018",
-      "event": "llm_error",
-      "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
-      "timestamp": "2026-04-19T02:35:32.829992"
-    },
-    {
-      "ticket_id": "TKT-017",
-      "timestamp": "2026-04-19T02:35:32.830229",
+      "timestamp": "2026-04-19T12:34:35.024451",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-017",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
+        "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
         "priority": "medium"
       },
       "result": {
@@ -850,11 +1192,11 @@
     },
     {
       "ticket_id": "TKT-018",
-      "timestamp": "2026-04-19T02:35:32.891096",
+      "timestamp": "2026-04-19T12:34:35.086331",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-018",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
+        "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
         "priority": "medium"
       },
       "result": {
@@ -869,36 +1211,36 @@
     {
       "ticket_id": "TKT-019",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T02:35:47.892447",
+      "timestamp": "2026-04-19T12:34:55.087729",
       "subject": "General question about returns",
       "customer_email": "irene.castillo@email.com"
     },
     {
       "ticket_id": "TKT-019",
       "event": "llm_error",
-      "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
-      "timestamp": "2026-04-19T02:35:48.129706"
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98729, Requested 2546. Please try again in 18m21.6s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T12:35:41.377712"
     },
     {
       "ticket_id": "TKT-020",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T02:35:48.129818",
+      "timestamp": "2026-04-19T12:35:41.377762",
       "subject": "my thing is broken pls help",
       "customer_email": "james.wu@email.com"
     },
     {
       "ticket_id": "TKT-020",
       "event": "llm_error",
-      "error": "404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
-      "timestamp": "2026-04-19T02:35:48.432706"
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98675, Requested 2545. Please try again in 17m34.08s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T12:36:27.412177"
     },
     {
       "ticket_id": "TKT-019",
-      "timestamp": "2026-04-19T02:35:48.432855",
+      "timestamp": "2026-04-19T12:36:27.412804",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-019",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
+        "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
         "priority": "medium"
       },
       "result": {
@@ -912,11 +1254,11 @@
     },
     {
       "ticket_id": "TKT-020",
-      "timestamp": "2026-04-19T02:35:48.487426",
+      "timestamp": "2026-04-19T12:36:27.475097",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-020",
-        "summary": "LLM error: 404 models/gemini-1.5-flash-latest is not found for API version v1beta, or is not supported for gene",
+        "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
         "priority": "medium"
       },
       "result": {

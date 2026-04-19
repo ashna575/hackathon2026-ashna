@@ -1,5 +1,6 @@
 """
-agent.py - ShopWave support agent using Gemini API.
+agent.py - ShopWave support agent.
+Automatically tries Groq first, falls back to Gemini if needed.
 ReAct loop: Think -> Choose Tool -> Run Tool -> Observe -> Think Again
 """
 
@@ -9,7 +10,6 @@ import re
 import os
 import time
 from datetime import datetime
-import google.generativeai as genai
 
 from tools import (
     get_order, get_customer, get_product, search_knowledge_base,
@@ -17,11 +17,27 @@ from tools import (
 )
 
 # ─────────────────────────────────────────
-# CONFIGURE GEMINI
+# AUTO-DETECT WHICH API TO USE
+# Set GROQ_API_KEY or GEMINI_API_KEY in terminal
+# Agent automatically uses whichever is available
 # ─────────────────────────────────────────
 
-genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
-model = genai.GenerativeModel("gemini-1.5-flash-latest")
+GROQ_KEY   = os.environ.get("GROQ_API_KEY")
+GEMINI_KEY = os.environ.get("GEMINI_API_KEY")
+
+if GROQ_KEY:
+    from groq import Groq
+    groq_client = Groq(api_key=GROQ_KEY)
+    API_MODE = "groq"
+    print("  Using: Groq API (llama-3.3-70b)")
+elif GEMINI_KEY:
+    from google import genai
+    from google.genai import types
+    gemini_client = genai.Client(api_key=GEMINI_KEY)
+    API_MODE = "gemini"
+    print("  Using: Gemini API (gemini-2.0-flash-lite)")
+else:
+    raise ValueError("No API key found! Set GROQ_API_KEY or GEMINI_API_KEY")
 
 TOOL_REGISTRY = {
     "get_order": get_order,
@@ -57,9 +73,9 @@ RULES:
 6. For ambiguous tickets with no order ID, ask for more info via send_reply
 7. Always end with send_reply or escalate
 
-CONFIDENCE: HIGH >85% resolve autonomously, MEDIUM 60-85% resolve with note, LOW <60% escalate
+CONFIDENCE: HIGH >85% resolve, MEDIUM 60-85% resolve with note, LOW <60% escalate
 
-OUTPUT: respond ONLY with valid JSON, no extra text, no markdown fences:
+OUTPUT: respond ONLY with valid JSON, no extra text, no markdown:
 {
   "thinking": "your reasoning about this ticket",
   "tool_calls": [
@@ -75,21 +91,38 @@ OUTPUT: respond ONLY with valid JSON, no extra text, no markdown fences:
 
 
 def call_llm(prompt: str) -> dict:
-    """Call Gemini and parse JSON response. Retries on rate limit."""
+    """Call whichever LLM is configured. Retries on rate limit."""
     for attempt in range(3):
         try:
-            response = model.generate_content(
-                SYSTEM_PROMPT + "\n\n" + prompt,
-                generation_config=genai.types.GenerationConfig(
+            if API_MODE == "groq":
+                response = groq_client.chat.completions.create(
+                    model="llama-3.3-70b-versatile",
+                    messages=[
+                        {"role": "system", "content": SYSTEM_PROMPT},
+                        {"role": "user", "content": prompt}
+                    ],
                     temperature=0.2,
-                    max_output_tokens=2000,
+                    max_tokens=2000,
                 )
-            )
-            raw = response.text
+                raw = response.choices[0].message.content
+
+            else:  # gemini
+                response = gemini_client.models.generate_content(
+                    model="gemini-2.0-flash-lite",
+                    contents=SYSTEM_PROMPT + "\n\n" + prompt,
+                    config=types.GenerateContentConfig(
+                        temperature=0.2,
+                        max_output_tokens=2000,
+                    )
+                )
+                raw = response.text
+
             cleaned = re.sub(r"```json|```", "", raw).strip()
             return json.loads(cleaned)
+
         except Exception as e:
-            if "429" in str(e) or "quota" in str(e).lower():
+            err = str(e)
+            if ("429" in err or "quota" in err.lower() or "exhausted" in err.lower()) and attempt < 2:
                 wait = (attempt + 1) * 15
                 print(f"    Rate limit — waiting {wait}s...")
                 time.sleep(wait)
@@ -158,7 +191,7 @@ Analyze this ticket carefully. Output ONLY valid JSON with at least 3 tool calls
             "summary": f"LLM error: {str(e)[:100]}",
             "priority": "medium"
         }, ticket_id, audit_log)
-        return {"ticket_id": ticket_id, "status": "escalated", "reason": "llm_error",
+        return {"ticket_id": ticket_id, "status": "escalated",
                 "subject": ticket["subject"], "customer_email": ticket["customer_email"],
                 "confidence": 0, "summary": f"Escalated due to LLM error: {str(e)[:80]}",
                 "tools_called": [], "tool_count": 0,
