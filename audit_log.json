@@ -1,8 +1,8 @@
 {
   "run_metadata": {
-    "started_at": "2026-04-19T12:17:33.600829",
-    "finished_at": "2026-04-19T12:36:27.475304",
-    "total_duration_seconds": 1133.87,
+    "started_at": "2026-04-19T13:05:23.911140",
+    "finished_at": "2026-04-19T13:23:21.567130",
+    "total_duration_seconds": 1077.66,
     "tickets_processed": 20,
     "concurrency": "batches of 3 via asyncio.gather"
   },
@@ -13,54 +13,41 @@
       "customer_email": "alice.turner@email.com",
       "status": "pending",
       "confidence": 0.8,
-      "summary": "Customer requested a refund for defective headphones, verifying order and product details to determine eligibility for a refund.",
+      "summary": "Customer requested a refund for defective headphones, verifying order and product details to determine eligibility for a refund",
       "tools_called": [
         "get_customer",
         "get_order",
         "get_product",
         "check_refund_eligibility",
-        "search_knowledge_base",
-        "send_reply"
+        "search_knowledge_base"
       ],
-      "tool_count": 6,
-      "duration_ms": 179190,
-      "processed_at": "2026-04-19T12:20:32.791593"
+      "tool_count": 5,
+      "duration_ms": 140612,
+      "processed_at": "2026-04-19T13:07:44.524821"
     },
     {
       "ticket_id": "TKT-002",
+      "status": "escalated",
       "subject": "I want to return my watch",
       "customer_email": "bob.mendes@email.com",
-      "status": "pending",
-      "confidence": 0.8,
-      "summary": "Customer is requesting a return and refund for their smart watch, checking order details, customer profile, product information, and refund eligibility",
-      "tools_called": [
-        "get_order",
-        "get_customer",
-        "get_product",
-        "check_refund_eligibility",
-        "search_knowledge_base"
-      ],
-      "tool_count": 5,
-      "duration_ms": 126206,
-      "processed_at": "2026-04-19T12:19:46.476297"
+      "confidence": 0,
+      "summary": "Escalated due to LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3",
+      "tools_called": [],
+      "tool_count": 0,
+      "duration_ms": 0,
+      "processed_at": "2026-04-19T13:06:58.328878"
     },
     {
       "ticket_id": "TKT-003",
+      "status": "escalated",
       "subject": "Coffee maker stopped working",
       "customer_email": "carol.nguyen@email.com",
-      "status": "pending",
-      "confidence": 0.8,
-      "summary": "Gathering information to determine the best course of action for the customer's defective coffee maker",
-      "tools_called": [
-        "get_order",
-        "get_customer",
-        "get_product",
-        "check_refund_eligibility",
-        "search_knowledge_base"
-      ],
-      "tool_count": 5,
-      "duration_ms": 201749,
-      "processed_at": "2026-04-19T12:21:19.817521"
+      "confidence": 0,
+      "summary": "Escalated due to LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3",
+      "tools_called": [],
+      "tool_count": 0,
+      "duration_ms": 0,
+      "processed_at": "2026-04-19T13:06:58.383213"
     },
     {
       "ticket_id": "TKT-004",
@@ -72,7 +59,7 @@
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T12:23:59.537773"
+      "processed_at": "2026-04-19T13:09:56.235860"
     },
     {
       "ticket_id": "TKT-005",
@@ -84,19 +71,23 @@
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T12:23:59.537827"
+      "processed_at": "2026-04-19T13:09:56.235907"
     },
     {
       "ticket_id": "TKT-006",
-      "status": "escalated",
       "subject": "I want to cancel",
       "customer_email": "frank.osei@email.com",
-      "confidence": 0,
-      "summary": "Escalated due to LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3",
-      "tools_called": [],
-      "tool_count": 0,
-      "duration_ms": 0,
-      "processed_at": "2026-04-19T12:23:59.596127"
+      "status": "pending",
+      "confidence": 0.7,
+      "summary": "Customer requested cancellation, awaiting order ID to proceed",
+      "tools_called": [
+        "get_customer",
+        "search_knowledge_base",
+        "send_reply"
+      ],
+      "tool_count": 3,
+      "duration_ms": 63554,
+      "processed_at": "2026-04-19T13:10:43.214309"
     },
     {
       "ticket_id": "TKT-007",
@@ -108,7 +99,7 @@
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T12:26:37.749415"
+      "processed_at": "2026-04-19T13:13:23.623356"
     },
     {
       "ticket_id": "TKT-008",
@@ -120,7 +111,7 @@
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T12:26:37.749466"
+      "processed_at": "2026-04-19T13:13:23.623386"
     },
     {
       "ticket_id": "TKT-009",
@@ -132,7 +123,7 @@
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T12:26:37.812690"
+      "processed_at": "2026-04-19T13:13:23.684699"
     },
     {
       "ticket_id": "TKT-010",
@@ -144,7 +135,7 @@
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T12:29:15.576131"
+      "processed_at": "2026-04-19T13:16:04.648621"
     },
     {
       "ticket_id": "TKT-011",
@@ -156,7 +147,7 @@
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T12:29:15.641942"
+      "processed_at": "2026-04-19T13:16:04.590991"
     },
     {
       "ticket_id": "TKT-012",
@@ -168,7 +159,7 @@
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T12:29:15.641864"
+      "processed_at": "2026-04-19T13:16:04.648561"
     },
     {
       "ticket_id": "TKT-013",
@@ -180,7 +171,7 @@
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T12:31:54.917166"
+      "processed_at": "2026-04-19T13:18:46.858753"
     },
     {
       "ticket_id": "TKT-014",
@@ -192,7 +183,7 @@
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T12:31:54.917188"
+      "processed_at": "2026-04-19T13:18:46.858796"
     },
     {
       "ticket_id": "TKT-015",
@@ -204,7 +195,7 @@
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T12:31:54.977660"
+      "processed_at": "2026-04-19T13:18:46.923572"
     },
     {
       "ticket_id": "TKT-016",
@@ -216,7 +207,7 @@
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T12:34:35.024432"
+      "processed_at": "2026-04-19T13:21:27.997241"
     },
     {
       "ticket_id": "TKT-017",
@@ -228,7 +219,7 @@
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T12:34:35.024453"
+      "processed_at": "2026-04-19T13:21:27.718320"
     },
     {
       "ticket_id": "TKT-018",
@@ -240,7 +231,7 @@
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T12:34:35.086344"
+      "processed_at": "2026-04-19T13:21:27.774773"
     },
     {
       "ticket_id": "TKT-019",
@@ -252,7 +243,7 @@
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T12:36:27.412808"
+      "processed_at": "2026-04-19T13:23:21.511378"
     },
     {
       "ticket_id": "TKT-020",
@@ -264,14 +255,14 @@
       "tools_called": [],
       "tool_count": 0,
       "duration_ms": 0,
-      "processed_at": "2026-04-19T12:36:27.475112"
+      "processed_at": "2026-04-19T13:23:21.566653"
     }
   ],
   "audit_trail": [
     {
       "ticket_id": "TKT-001",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T12:17:33.601359",
+      "timestamp": "2026-04-19T13:05:23.912522",
       "subject": "Refund request for headphones",
       "customer_email": "alice.turner@email.com"
     },
@@ -284,112 +275,40 @@
         "get_order",
         "get_product",
         "check_refund_eligibility",
-        "search_knowledge_base",
-        "send_reply"
+        "search_knowledge_base"
       ],
       "confidence": 0.8,
-      "timestamp": "2026-04-19T12:17:40.269552"
-    },
-    {
-      "ticket_id": "TKT-001",
-      "timestamp": "2026-04-19T12:17:40.269611",
-      "tool": "get_customer",
-      "args": {
-        "email": "alice.turner@email.com"
-      },
-      "error": "get_customer server error: 503 Service Unavailable",
-      "status": "failed",
-      "attempt": 1
+      "timestamp": "2026-04-19T13:05:26.292625"
     },
     {
       "ticket_id": "TKT-002",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T12:17:40.269702",
+      "timestamp": "2026-04-19T13:05:26.292710",
       "subject": "I want to return my watch",
       "customer_email": "bob.mendes@email.com"
     },
     {
       "ticket_id": "TKT-002",
-      "event": "agent_plan",
-      "thinking": "The customer is requesting a return and refund for their smart watch. To resolve this, I need to check the order details, customer profile, and product information. I also need to verify the refund eligibility before taking any further action.",
-      "planned_tools": [
-        "get_order",
-        "get_customer",
-        "get_product",
-        "check_refund_eligibility",
-        "search_knowledge_base"
-      ],
-      "confidence": 0.8,
-      "timestamp": "2026-04-19T12:17:58.067576"
+      "event": "llm_error",
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99395, Requested 786. Please try again in 2m36.384s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T13:06:12.135098"
     },
     {
       "ticket_id": "TKT-003",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T12:17:58.067659",
+      "timestamp": "2026-04-19T13:06:12.135239",
       "subject": "Coffee maker stopped working",
       "customer_email": "carol.nguyen@email.com"
     },
     {
       "ticket_id": "TKT-003",
-      "event": "agent_plan",
-      "thinking": "The customer is reporting a defective coffee maker and is requesting a replacement or refund. To resolve this issue, I need to check the order details, customer profile, and product information. I also need to verify if the customer is eligible for a refund.",
-      "planned_tools": [
-        "get_order",
-        "get_customer",
-        "get_product",
-        "check_refund_eligibility",
-        "search_knowledge_base"
-      ],
-      "confidence": 0.8,
-      "timestamp": "2026-04-19T12:18:59.480474"
-    },
-    {
-      "ticket_id": "TKT-002",
-      "timestamp": "2026-04-19T12:18:59.480590",
-      "tool": "get_order",
-      "args": {
-        "order_id": "ORD-1002"
-      },
-      "result": {
-        "success": true,
-        "data": {
-          "order_id": "ORD-1002",
-          "customer_email": "bob.mendes@email.com",
-          "product_id": "PRD-002",
-          "status": "delivered",
-          "amount": 199.99,
-          "delivered_at": "2024-03-04",
-          "created_at": "2024-03-01"
-        }
-      },
-      "status": "success",
-      "attempt": 1
-    },
-    {
-      "ticket_id": "TKT-003",
-      "timestamp": "2026-04-19T12:18:59.536626",
-      "tool": "get_order",
-      "args": {
-        "order_id": "ORD-1003"
-      },
-      "result": {
-        "success": true,
-        "data": {
-          "order_id": "ORD-1003",
-          "customer_email": "carol.nguyen@email.com",
-          "product_id": "PRD-003",
-          "status": "delivered",
-          "amount": 75.0,
-          "delivered_at": "2024-02-20",
-          "created_at": "2024-02-18"
-        }
-      },
-      "status": "success",
-      "attempt": 1
+      "event": "llm_error",
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99342, Requested 2563. Please try again in 27m25.92s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T13:06:58.325187"
     },
     {
       "ticket_id": "TKT-001",
-      "timestamp": "2026-04-19T12:18:59.536752",
+      "timestamp": "2026-04-19T13:06:58.328104",
       "tool": "get_customer",
       "args": {
         "email": "alice.turner@email.com"
@@ -408,56 +327,47 @@
         }
       },
       "status": "success",
-      "attempt": 2
+      "attempt": 1
     },
     {
       "ticket_id": "TKT-002",
-      "timestamp": "2026-04-19T12:18:59.536793",
-      "tool": "get_customer",
+      "timestamp": "2026-04-19T13:06:58.328783",
+      "tool": "escalate",
       "args": {
-        "email": "bob.mendes@email.com"
+        "ticket_id": "TKT-002",
+        "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
+        "priority": "medium"
       },
       "result": {
         "success": true,
-        "data": {
-          "email": "bob.mendes@email.com",
-          "name": "Bob Mendes",
-          "tier": "standard",
-          "vip_exception": false,
-          "orders": [
-            "ORD-1002"
-          ]
-        }
+        "ticket_id": "TKT-002",
+        "escalation_id": "ESC-TKT-002-MEDIUM",
+        "message": "Ticket escalated with medium priority. Human agent will review shortly."
       },
       "status": "success",
       "attempt": 1
     },
     {
       "ticket_id": "TKT-003",
-      "timestamp": "2026-04-19T12:18:59.599571",
-      "tool": "get_customer",
+      "timestamp": "2026-04-19T13:06:58.383197",
+      "tool": "escalate",
       "args": {
-        "email": "carol.nguyen@email.com"
+        "ticket_id": "TKT-003",
+        "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
+        "priority": "medium"
       },
       "result": {
         "success": true,
-        "data": {
-          "email": "carol.nguyen@email.com",
-          "name": "Carol Nguyen",
-          "tier": "standard",
-          "vip_exception": false,
-          "orders": [
-            "ORD-1003",
-            "ORD-1012"
-          ]
-        }
+        "ticket_id": "TKT-003",
+        "escalation_id": "ESC-TKT-003-MEDIUM",
+        "message": "Ticket escalated with medium priority. Human agent will review shortly."
       },
       "status": "success",
       "attempt": 1
     },
     {
       "ticket_id": "TKT-001",
-      "timestamp": "2026-04-19T12:18:59.599655",
+      "timestamp": "2026-04-19T13:06:58.383275",
       "tool": "get_order",
       "args": {
         "order_id": "ORD-1001"
@@ -478,36 +388,8 @@
       "attempt": 1
     },
     {
-      "ticket_id": "TKT-002",
-      "timestamp": "2026-04-19T12:18:59.599689",
-      "tool": "get_product",
-      "args": {
-        "product_id": "unknown"
-      },
-      "result": {
-        "error": "Product unknown not found",
-        "product_id": "unknown"
-      },
-      "status": "success",
-      "attempt": 1
-    },
-    {
-      "ticket_id": "TKT-003",
-      "timestamp": "2026-04-19T12:18:59.662838",
-      "tool": "get_product",
-      "args": {
-        "product_id": "BrewMaster"
-      },
-      "result": {
-        "error": "Product BrewMaster not found",
-        "product_id": "BrewMaster"
-      },
-      "status": "success",
-      "attempt": 1
-    },
-    {
       "ticket_id": "TKT-001",
-      "timestamp": "2026-04-19T12:18:59.662917",
+      "timestamp": "2026-04-19T13:06:58.446843",
       "tool": "get_product",
       "args": {
         "product_id": "product_id_from_get_order"
@@ -520,23 +402,8 @@
       "attempt": 1
     },
     {
-      "ticket_id": "TKT-002",
-      "timestamp": "2026-04-19T12:18:59.667575",
-      "tool": "check_refund_eligibility",
-      "args": {
-        "order_id": "ORD-1002"
-      },
-      "result": {
-        "eligible": true,
-        "reason": "Order is within return window and eligible for refund",
-        "amount": 199.99
-      },
-      "status": "success",
-      "attempt": 1
-    },
-    {
       "ticket_id": "TKT-001",
-      "timestamp": "2026-04-19T12:18:59.725989",
+      "timestamp": "2026-04-19T13:06:58.524630",
       "tool": "check_refund_eligibility",
       "args": {
         "order_id": "ORD-1001"
@@ -551,55 +418,8 @@
       "attempt": 1
     },
     {
-      "ticket_id": "TKT-002",
-      "timestamp": "2026-04-19T12:18:59.726096",
-      "tool": "search_knowledge_base",
-      "args": {
-        "query": "return policy for smart watches"
-      },
-      "result": {
-        "success": true,
-        "data": [
-          {
-            "topic": "return policy",
-            "content": "Customers can return most items within 30 days of delivery. Electronics must be unused and in original packaging. Some products have extended return windows (e.g., laptop stands: 60 days). Items registered online may not be eligible for return."
-          },
-          {
-            "topic": "vip policy",
-            "content": "VIP customers may receive extended return windows and exceptions on a case-by-case basis as noted in their account."
-          }
-        ],
-        "query": "return policy for smart watches"
-      },
-      "status": "success",
-      "attempt": 1
-    },
-    {
-      "ticket_id": "TKT-002",
-      "event": "ticket_resolved",
-      "outcome": {
-        "ticket_id": "TKT-002",
-        "subject": "I want to return my watch",
-        "customer_email": "bob.mendes@email.com",
-        "status": "pending",
-        "confidence": 0.8,
-        "summary": "Customer is requesting a return and refund for their smart watch, checking order details, customer profile, product information, and refund eligibility",
-        "tools_called": [
-          "get_order",
-          "get_customer",
-          "get_product",
-          "check_refund_eligibility",
-          "search_knowledge_base"
-        ],
-        "tool_count": 5,
-        "duration_ms": 126206,
-        "processed_at": "2026-04-19T12:19:46.476297"
-      },
-      "timestamp": "2026-04-19T12:19:46.476297"
-    },
-    {
       "ticket_id": "TKT-001",
-      "timestamp": "2026-04-19T12:19:46.476821",
+      "timestamp": "2026-04-19T13:06:58.589484",
       "tool": "search_knowledge_base",
       "args": {
         "query": "return policy for defective products"
@@ -617,33 +437,6 @@
           }
         ],
         "query": "return policy for defective products"
-      },
-      "status": "success",
-      "attempt": 1
-    },
-    {
-      "ticket_id": "TKT-003",
-      "timestamp": "2026-04-19T12:19:46.476899",
-      "tool": "check_refund_eligibility",
-      "args": {
-        "order_id": "ORD-1003"
-      },
-      "error": "check_refund_eligibility timed out after 500ms (guaranteed failure for ORD-1003)",
-      "status": "failed",
-      "attempt": 1
-    },
-    {
-      "ticket_id": "TKT-001",
-      "timestamp": "2026-04-19T12:19:46.527797",
-      "tool": "send_reply",
-      "args": {
-        "ticket_id": "TKT-001",
-        "message": "Thank you for reaching out to us about your defective headphones. We are processing your refund request and will get back to you soon."
-      },
-      "result": {
-        "success": true,
-        "ticket_id": "TKT-001",
-        "message": "Reply sent to customer successfully"
       },
       "status": "success",
       "attempt": 1
@@ -657,121 +450,79 @@
         "customer_email": "alice.turner@email.com",
         "status": "pending",
         "confidence": 0.8,
-        "summary": "Customer requested a refund for defective headphones, verifying order and product details to determine eligibility for a refund.",
+        "summary": "Customer requested a refund for defective headphones, verifying order and product details to determine eligibility for a refund",
         "tools_called": [
           "get_customer",
           "get_order",
-          "get_product",
-          "check_refund_eligibility",
-          "search_knowledge_base",
-          "send_reply"
-        ],
-        "tool_count": 6,
-        "duration_ms": 179190,
-        "processed_at": "2026-04-19T12:20:32.791593"
-      },
-      "timestamp": "2026-04-19T12:20:32.791593"
-    },
-    {
-      "ticket_id": "TKT-003",
-      "timestamp": "2026-04-19T12:20:33.302601",
-      "tool": "check_refund_eligibility",
-      "args": {
-        "order_id": "ORD-1003"
-      },
-      "error": "check_refund_eligibility timed out after 500ms (guaranteed failure for ORD-1003)",
-      "status": "failed",
-      "attempt": 2
-    },
-    {
-      "ticket_id": "TKT-003",
-      "timestamp": "2026-04-19T12:20:33.367126",
-      "tool": "search_knowledge_base",
-      "args": {
-        "query": "coffee maker return policy"
-      },
-      "result": {
-        "success": true,
-        "data": [
-          {
-            "topic": "return policy",
-            "content": "Customers can return most items within 30 days of delivery. Electronics must be unused and in original packaging. Some products have extended return windows (e.g., laptop stands: 60 days). Items registered online may not be eligible for return."
-          },
-          {
-            "topic": "vip policy",
-            "content": "VIP customers may receive extended return windows and exceptions on a case-by-case basis as noted in their account."
-          }
-        ],
-        "query": "coffee maker return policy"
-      },
-      "status": "success",
-      "attempt": 1
-    },
-    {
-      "ticket_id": "TKT-003",
-      "event": "ticket_resolved",
-      "outcome": {
-        "ticket_id": "TKT-003",
-        "subject": "Coffee maker stopped working",
-        "customer_email": "carol.nguyen@email.com",
-        "status": "pending",
-        "confidence": 0.8,
-        "summary": "Gathering information to determine the best course of action for the customer's defective coffee maker",
-        "tools_called": [
-          "get_order",
-          "get_customer",
           "get_product",
           "check_refund_eligibility",
           "search_knowledge_base"
         ],
         "tool_count": 5,
-        "duration_ms": 201749,
-        "processed_at": "2026-04-19T12:21:19.817521"
+        "duration_ms": 140612,
+        "processed_at": "2026-04-19T13:07:44.524821"
       },
-      "timestamp": "2026-04-19T12:21:19.817521"
+      "timestamp": "2026-04-19T13:07:44.524821"
     },
     {
       "ticket_id": "TKT-004",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T12:21:39.818900",
+      "timestamp": "2026-04-19T13:08:04.532918",
       "subject": "Wrong size delivered",
       "customer_email": "david.park@email.com"
     },
     {
       "ticket_id": "TKT-004",
       "event": "llm_error",
-      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99649, Requested 2568. Please try again in 31m55.487999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
-      "timestamp": "2026-04-19T12:22:26.500468"
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99212, Requested 2568. Please try again in 25m37.92s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T13:08:50.570043"
     },
     {
       "ticket_id": "TKT-005",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T12:22:26.500561",
+      "timestamp": "2026-04-19T13:08:50.570130",
       "subject": "Return request",
       "customer_email": "emma.collins@email.com"
     },
     {
       "ticket_id": "TKT-005",
       "event": "llm_error",
-      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99594, Requested 2570. Please try again in 31m9.696s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
-      "timestamp": "2026-04-19T12:23:13.494788"
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99155, Requested 2570. Please try again in 24m50.4s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T13:09:39.659579"
     },
     {
       "ticket_id": "TKT-006",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T12:23:13.494874",
+      "timestamp": "2026-04-19T13:09:39.659641",
       "subject": "I want to cancel",
       "customer_email": "frank.osei@email.com"
     },
     {
       "ticket_id": "TKT-006",
-      "event": "llm_error",
-      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99541, Requested 2548. Please try again in 30m4.896s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
-      "timestamp": "2026-04-19T12:23:59.537573"
+      "event": "agent_plan",
+      "thinking": "The customer wants to cancel their order, but we need to find the order ID first. We'll start by retrieving the customer's profile to see if we can find any recent orders. Then, we'll search the knowledge base to understand the cancellation policy. Finally, we'll try to find the order and check its status.",
+      "planned_tools": [
+        "get_customer",
+        "search_knowledge_base",
+        "send_reply"
+      ],
+      "confidence": 0.7,
+      "timestamp": "2026-04-19T13:09:56.232887"
+    },
+    {
+      "ticket_id": "TKT-006",
+      "timestamp": "2026-04-19T13:09:56.235319",
+      "tool": "get_customer",
+      "args": {
+        "email": "frank.osei@email.com"
+      },
+      "error": "get_customer returned malformed data: {status: null, data: undefined}",
+      "status": "failed",
+      "attempt": 1
     },
     {
       "ticket_id": "TKT-004",
-      "timestamp": "2026-04-19T12:23:59.537762",
+      "timestamp": "2026-04-19T13:09:56.235850",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-004",
@@ -789,7 +540,7 @@
     },
     {
       "ticket_id": "TKT-005",
-      "timestamp": "2026-04-19T12:23:59.537822",
+      "timestamp": "2026-04-19T13:09:56.235902",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-005",
@@ -807,64 +558,127 @@
     },
     {
       "ticket_id": "TKT-006",
-      "timestamp": "2026-04-19T12:23:59.596113",
-      "tool": "escalate",
+      "timestamp": "2026-04-19T13:09:56.494539",
+      "tool": "get_customer",
+      "args": {
+        "email": "frank.osei@email.com"
+      },
+      "result": {
+        "success": true,
+        "data": {
+          "email": "frank.osei@email.com",
+          "name": "Frank Osei",
+          "tier": "standard",
+          "vip_exception": false,
+          "orders": [
+            "ORD-1006"
+          ]
+        }
+      },
+      "status": "success",
+      "attempt": 2
+    },
+    {
+      "ticket_id": "TKT-006",
+      "timestamp": "2026-04-19T13:09:56.494677",
+      "tool": "search_knowledge_base",
+      "args": {
+        "query": "cancellation policy"
+      },
+      "error": "search_knowledge_base returned malformed data: {status: null, data: undefined}",
+      "status": "failed",
+      "attempt": 1
+    },
+    {
+      "ticket_id": "TKT-006",
+      "timestamp": "2026-04-19T13:09:56.702400",
+      "tool": "search_knowledge_base",
+      "args": {
+        "query": "cancellation policy"
+      },
+      "error": "search_knowledge_base server error: 503 Service Unavailable",
+      "status": "failed",
+      "attempt": 2
+    },
+    {
+      "ticket_id": "TKT-006",
+      "timestamp": "2026-04-19T13:09:56.765301",
+      "tool": "send_reply",
       "args": {
         "ticket_id": "TKT-006",
-        "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
-        "priority": "medium"
+        "message": "We've received your cancellation request. Could you please provide us with your order ID so we can assist you further?"
       },
       "result": {
         "success": true,
         "ticket_id": "TKT-006",
-        "escalation_id": "ESC-TKT-006-MEDIUM",
-        "message": "Ticket escalated with medium priority. Human agent will review shortly."
+        "message": "Reply sent to customer successfully"
       },
       "status": "success",
       "attempt": 1
     },
     {
+      "ticket_id": "TKT-006",
+      "event": "ticket_resolved",
+      "outcome": {
+        "ticket_id": "TKT-006",
+        "subject": "I want to cancel",
+        "customer_email": "frank.osei@email.com",
+        "status": "pending",
+        "confidence": 0.7,
+        "summary": "Customer requested cancellation, awaiting order ID to proceed",
+        "tools_called": [
+          "get_customer",
+          "search_knowledge_base",
+          "send_reply"
+        ],
+        "tool_count": 3,
+        "duration_ms": 63554,
+        "processed_at": "2026-04-19T13:10:43.214309"
+      },
+      "timestamp": "2026-04-19T13:10:43.214309"
+    },
+    {
       "ticket_id": "TKT-007",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T12:24:19.597070",
+      "timestamp": "2026-04-19T13:11:03.216915",
       "subject": "Laptop stand return",
       "customer_email": "grace.patel@email.com"
     },
     {
       "ticket_id": "TKT-007",
       "event": "llm_error",
-      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99464, Requested 2561. Please try again in 29m9.6s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
-      "timestamp": "2026-04-19T12:25:06.042535"
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99759, Requested 782. Please try again in 7m47.424s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T13:11:50.022118"
     },
     {
       "ticket_id": "TKT-008",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T12:25:06.042671",
+      "timestamp": "2026-04-19T13:11:50.022214",
       "subject": "Lamp came broken",
       "customer_email": "henry.marsh@email.com"
     },
     {
       "ticket_id": "TKT-008",
       "event": "llm_error",
-      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99411, Requested 2557. Please try again in 28m20.351999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
-      "timestamp": "2026-04-19T12:25:51.913336"
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99705, Requested 2557. Please try again in 32m34.368s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T13:12:36.682109"
     },
     {
       "ticket_id": "TKT-009",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T12:25:51.913409",
+      "timestamp": "2026-04-19T13:12:36.682195",
       "subject": "Refund already done?",
       "customer_email": "irene.castillo@email.com"
     },
     {
       "ticket_id": "TKT-009",
       "event": "llm_error",
-      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99358, Requested 2564. Please try again in 27m40.608s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
-      "timestamp": "2026-04-19T12:26:37.749240"
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99650, Requested 2564. Please try again in 31m52.896s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T13:13:23.623230"
     },
     {
       "ticket_id": "TKT-007",
-      "timestamp": "2026-04-19T12:26:37.749405",
+      "timestamp": "2026-04-19T13:13:23.623350",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-007",
@@ -882,7 +696,7 @@
     },
     {
       "ticket_id": "TKT-008",
-      "timestamp": "2026-04-19T12:26:37.749459",
+      "timestamp": "2026-04-19T13:13:23.623382",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-008",
@@ -900,7 +714,7 @@
     },
     {
       "ticket_id": "TKT-009",
-      "timestamp": "2026-04-19T12:26:37.812677",
+      "timestamp": "2026-04-19T13:13:23.684667",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-009",
@@ -919,35 +733,22 @@
     {
       "ticket_id": "TKT-010",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T12:26:57.813970",
+      "timestamp": "2026-04-19T13:13:43.685858",
       "subject": "Where is my order?",
       "customer_email": "james.wu@email.com"
     },
     {
       "ticket_id": "TKT-010",
       "event": "llm_error",
-      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99281, Requested 2555. Please try again in 26m26.304s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
-      "timestamp": "2026-04-19T12:27:43.859642"
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99573, Requested 2555. Please try again in 30m38.592s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T13:14:30.806784"
     },
     {
-      "ticket_id": "TKT-011",
-      "event": "ticket_received",
-      "timestamp": "2026-04-19T12:27:43.859736",
-      "subject": "Wrong colour watch received",
-      "customer_email": "alice.turner@email.com"
-    },
-    {
-      "ticket_id": "TKT-011",
-      "event": "llm_error",
-      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99228, Requested 2558. Please try again in 25m43.104s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
-      "timestamp": "2026-04-19T12:28:29.690345"
-    },
-    {
-      "ticket_id": "TKT-011",
-      "timestamp": "2026-04-19T12:28:29.690699",
+      "ticket_id": "TKT-010",
+      "timestamp": "2026-04-19T13:14:30.809029",
       "tool": "escalate",
       "args": {
-        "ticket_id": "TKT-011",
+        "ticket_id": "TKT-010",
         "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
         "priority": "medium"
       },
@@ -956,31 +757,44 @@
       "attempt": 1
     },
     {
+      "ticket_id": "TKT-011",
+      "event": "ticket_received",
+      "timestamp": "2026-04-19T13:14:30.809133",
+      "subject": "Wrong colour watch received",
+      "customer_email": "alice.turner@email.com"
+    },
+    {
+      "ticket_id": "TKT-011",
+      "event": "llm_error",
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99518, Requested 2558. Please try again in 29m53.664s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T13:15:17.914385"
+    },
+    {
       "ticket_id": "TKT-012",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T12:28:29.690819",
+      "timestamp": "2026-04-19T13:15:17.914498",
       "subject": "Cancel my new order",
       "customer_email": "carol.nguyen@email.com"
     },
     {
       "ticket_id": "TKT-012",
       "event": "llm_error",
-      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99175, Requested 2557. Please try again in 24m56.447999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
-      "timestamp": "2026-04-19T12:29:15.575963"
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99464, Requested 2557. Please try again in 29m6.144s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T13:16:04.590813"
     },
     {
-      "ticket_id": "TKT-010",
-      "timestamp": "2026-04-19T12:29:15.576120",
+      "ticket_id": "TKT-011",
+      "timestamp": "2026-04-19T13:16:04.590982",
       "tool": "escalate",
       "args": {
-        "ticket_id": "TKT-010",
+        "ticket_id": "TKT-011",
         "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
         "priority": "medium"
       },
       "result": {
         "success": true,
-        "ticket_id": "TKT-010",
-        "escalation_id": "ESC-TKT-010-MEDIUM",
+        "ticket_id": "TKT-011",
+        "escalation_id": "ESC-TKT-011-MEDIUM",
         "message": "Ticket escalated with medium priority. Human agent will review shortly."
       },
       "status": "success",
@@ -988,7 +802,7 @@
     },
     {
       "ticket_id": "TKT-012",
-      "timestamp": "2026-04-19T12:29:15.641848",
+      "timestamp": "2026-04-19T13:16:04.648543",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-012",
@@ -1005,18 +819,18 @@
       "attempt": 1
     },
     {
-      "ticket_id": "TKT-011",
-      "timestamp": "2026-04-19T12:29:15.641933",
+      "ticket_id": "TKT-010",
+      "timestamp": "2026-04-19T13:16:04.648615",
       "tool": "escalate",
       "args": {
-        "ticket_id": "TKT-011",
+        "ticket_id": "TKT-010",
         "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
         "priority": "medium"
       },
       "result": {
         "success": true,
-        "ticket_id": "TKT-011",
-        "escalation_id": "ESC-TKT-011-MEDIUM",
+        "ticket_id": "TKT-010",
+        "escalation_id": "ESC-TKT-010-MEDIUM",
         "message": "Ticket escalated with medium priority. Human agent will review shortly."
       },
       "status": "success",
@@ -1025,45 +839,45 @@
     {
       "ticket_id": "TKT-013",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T12:29:35.643129",
+      "timestamp": "2026-04-19T13:16:24.649946",
       "subject": "Return for bluetooth speaker",
       "customer_email": "grace.patel@email.com"
     },
     {
       "ticket_id": "TKT-013",
       "event": "llm_error",
-      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99099, Requested 2553. Please try again in 23m47.328s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
-      "timestamp": "2026-04-19T12:30:21.702163"
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99386, Requested 2553. Please try again in 27m55.296s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T13:17:12.079139"
     },
     {
       "ticket_id": "TKT-014",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T12:30:21.702235",
+      "timestamp": "2026-04-19T13:17:12.079212",
       "subject": "Thinking about returning my watch",
       "customer_email": "henry.marsh@email.com"
     },
     {
       "ticket_id": "TKT-014",
       "event": "llm_error",
-      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99045, Requested 2561. Please try again in 23m7.584s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
-      "timestamp": "2026-04-19T12:31:07.822698"
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99331, Requested 2561. Please try again in 27m14.687999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T13:17:59.356977"
     },
     {
       "ticket_id": "TKT-015",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T12:31:07.822757",
+      "timestamp": "2026-04-19T13:17:59.357087",
       "subject": "Damaged coffee maker",
       "customer_email": "emma.collins@email.com"
     },
     {
       "ticket_id": "TKT-015",
       "event": "llm_error",
-      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98991, Requested 2565. Please try again in 22m24.384s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
-      "timestamp": "2026-04-19T12:31:54.917082"
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99276, Requested 2565. Please try again in 26m30.624s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T13:18:46.858598"
     },
     {
       "ticket_id": "TKT-013",
-      "timestamp": "2026-04-19T12:31:54.917163",
+      "timestamp": "2026-04-19T13:18:46.858744",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-013",
@@ -1081,7 +895,7 @@
     },
     {
       "ticket_id": "TKT-014",
-      "timestamp": "2026-04-19T12:31:54.917186",
+      "timestamp": "2026-04-19T13:18:46.858790",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-014",
@@ -1099,7 +913,7 @@
     },
     {
       "ticket_id": "TKT-015",
-      "timestamp": "2026-04-19T12:31:54.977647",
+      "timestamp": "2026-04-19T13:18:46.923560",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-015",
@@ -1118,63 +932,58 @@
     {
       "ticket_id": "TKT-016",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T12:32:14.978813",
+      "timestamp": "2026-04-19T13:19:06.924842",
       "subject": "Refund request",
       "customer_email": "unknown.user@email.com"
     },
     {
       "ticket_id": "TKT-016",
       "event": "llm_error",
-      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98913, Requested 2534. Please try again in 20m50.208s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
-      "timestamp": "2026-04-19T12:33:02.190630"
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99198, Requested 2534. Please try again in 24m56.447999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T13:19:54.607863"
     },
     {
       "ticket_id": "TKT-017",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T12:33:02.191221",
+      "timestamp": "2026-04-19T13:19:54.608391",
       "subject": "Refund for shoes",
       "customer_email": "david.park@email.com"
     },
     {
       "ticket_id": "TKT-017",
       "event": "llm_error",
-      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98859, Requested 2553. Please try again in 20m19.968s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
-      "timestamp": "2026-04-19T12:33:48.500574"
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99144, Requested 2553. Please try again in 24m26.207999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T13:20:41.385839"
     },
     {
       "ticket_id": "TKT-018",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T12:33:48.500626",
+      "timestamp": "2026-04-19T13:20:41.385909",
       "subject": "Urgent refund needed",
       "customer_email": "bob.mendes@email.com"
     },
     {
       "ticket_id": "TKT-018",
       "event": "llm_error",
-      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98805, Requested 2571. Please try again in 19m48.864s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
-      "timestamp": "2026-04-19T12:34:35.024347"
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99090, Requested 2571. Please try again in 23m55.104s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T13:21:27.718131"
     },
     {
       "ticket_id": "TKT-016",
-      "timestamp": "2026-04-19T12:34:35.024428",
+      "timestamp": "2026-04-19T13:21:27.718281",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-016",
         "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
         "priority": "medium"
       },
-      "result": {
-        "success": true,
-        "ticket_id": "TKT-016",
-        "escalation_id": "ESC-TKT-016-MEDIUM",
-        "message": "Ticket escalated with medium priority. Human agent will review shortly."
-      },
-      "status": "success",
+      "error": "escalate timed out after 500ms",
+      "status": "failed",
       "attempt": 1
     },
     {
       "ticket_id": "TKT-017",
-      "timestamp": "2026-04-19T12:34:35.024451",
+      "timestamp": "2026-04-19T13:21:27.718312",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-017",
@@ -1192,7 +1001,7 @@
     },
     {
       "ticket_id": "TKT-018",
-      "timestamp": "2026-04-19T12:34:35.086331",
+      "timestamp": "2026-04-19T13:21:27.774761",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-018",
@@ -1209,34 +1018,52 @@
       "attempt": 1
     },
     {
+      "ticket_id": "TKT-016",
+      "timestamp": "2026-04-19T13:21:27.997228",
+      "tool": "escalate",
+      "args": {
+        "ticket_id": "TKT-016",
+        "summary": "LLM error: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in o",
+        "priority": "medium"
+      },
+      "result": {
+        "success": true,
+        "ticket_id": "TKT-016",
+        "escalation_id": "ESC-TKT-016-MEDIUM",
+        "message": "Ticket escalated with medium priority. Human agent will review shortly."
+      },
+      "status": "success",
+      "attempt": 2
+    },
+    {
       "ticket_id": "TKT-019",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T12:34:55.087729",
+      "timestamp": "2026-04-19T13:21:47.998383",
       "subject": "General question about returns",
       "customer_email": "irene.castillo@email.com"
     },
     {
       "ticket_id": "TKT-019",
       "event": "llm_error",
-      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98729, Requested 2546. Please try again in 18m21.6s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
-      "timestamp": "2026-04-19T12:35:41.377712"
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99012, Requested 2546. Please try again in 22m26.112s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T13:22:35.275931"
     },
     {
       "ticket_id": "TKT-020",
       "event": "ticket_received",
-      "timestamp": "2026-04-19T12:35:41.377762",
+      "timestamp": "2026-04-19T13:22:35.276006",
       "subject": "my thing is broken pls help",
       "customer_email": "james.wu@email.com"
     },
     {
       "ticket_id": "TKT-020",
       "event": "llm_error",
-      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98675, Requested 2545. Please try again in 17m34.08s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
-      "timestamp": "2026-04-19T12:36:27.412177"
+      "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01kpeq07cmfd7aetnagyq3gq98` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 98958, Requested 2545. Please try again in 21m38.592s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+      "timestamp": "2026-04-19T13:23:21.511254"
     },
     {
       "ticket_id": "TKT-019",
-      "timestamp": "2026-04-19T12:36:27.412804",
+      "timestamp": "2026-04-19T13:23:21.511370",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-019",
@@ -1254,7 +1081,7 @@
     },
     {
       "ticket_id": "TKT-020",
-      "timestamp": "2026-04-19T12:36:27.475097",
+      "timestamp": "2026-04-19T13:23:21.566638",
       "tool": "escalate",
       "args": {
         "ticket_id": "TKT-020",
