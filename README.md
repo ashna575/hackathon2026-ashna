@@ -170,3 +170,20 @@ The `audit_log.json` covers all 20 tickets with full reasoning:
 **Why asyncio?** Allows true concurrency without threads — safe, predictable, production-grade.
 
 **Why batch processing?** Respects API rate limits while maintaining concurrency within each batch.
+
+
+
+
+
+
+
+## Demo Video
+
+[Watch Full Demo on Google Drive](https://drive.google.com/file/d/1eCUPBQscLcYqVTbe1Vv3z3rp-j0O8000/view?usp=sharing)
+
+Demo shows:
+- All 20 tickets processed concurrently in batches
+- 12 auto-resolved, 6 escalated, 2 needs info, 0 errors
+- Live audit log generation
+- Social engineering detection (TKT-018)
+- Tool failure recovery (TKT-003)
